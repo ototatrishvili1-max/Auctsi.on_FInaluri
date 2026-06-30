@@ -1,0 +1,457 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>User Profile | AUCTI.ON</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#131315",
+                    "surface-dim": "#131315",
+                    "surface-container-lowest": "#0e0e10",
+                    "primary-container": "#0f172a",
+                    "surface-container-low": "#1b1b1d",
+                    "error": "#ffb4ab",
+                    "on-primary": "#283044",
+                    "surface-variant": "#353436",
+                    "secondary-fixed": "#d5e3fd",
+                    "primary-fixed-dim": "#bec6e0",
+                    "inverse-surface": "#e4e2e4",
+                    "surface-tint": "#bec6e0",
+                    "surface-bright": "#39393b",
+                    "tertiary-fixed": "#fcdeb5",
+                    "on-secondary-container": "#abb9d2",
+                    "secondary": "#b9c7e0",
+                    "outline": "#909097",
+                    "on-secondary-fixed": "#0d1c2f",
+                    "tertiary": "#dec29a",
+                    "primary-fixed": "#dae2fd",
+                    "on-background": "#e4e2e4",
+                    "on-tertiary-fixed": "#271901",
+                    "on-error": "#690005",
+                    "secondary-fixed-dim": "#b9c7e0",
+                    "tertiary-container": "#231500",
+                    "secondary-container": "#3c4a5e",
+                    "background": "#131315",
+                    "on-surface": "#e4e2e4",
+                    "on-error-container": "#ffdad6",
+                    "surface-container": "#1f1f21",
+                    "on-surface-variant": "#c6c6cd",
+                    "on-secondary": "#233144",
+                    "inverse-on-surface": "#303032",
+                    "on-primary-container": "#798098",
+                    "on-secondary-fixed-variant": "#3a485c",
+                    "surface-container-highest": "#353436",
+                    "primary": "#bec6e0",
+                    "error-container": "#93000a",
+                    "on-tertiary": "#3e2d11",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "on-primary-fixed": "#131b2e",
+                    "inverse-primary": "#565e74",
+                    "surface-container-high": "#2a2a2b",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "outline-variant": "#45464d",
+                    "on-tertiary-container": "#957d5a",
+                    "tertiary-fixed-dim": "#dec29a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding-mobile": "16px",
+                    "panel-gap": "20px",
+                    "gutter": "24px",
+                    "base": "8px",
+                    "container-padding-desktop": "32px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "price-display": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "price-display": ["36px", {"lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(31, 31, 33, 0.8);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            transform: scale(1.01);
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+        }
+        .gloss-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .gloss-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transform: rotate(45deg);
+            pointer-events: none;
+        }
+        .scroll-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .active-nav-indicator {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #bec6e0;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+<!-- Left Side Navigation (Fixed) -->
+<nav class="hidden lg:flex flex-col fixed left-0 top-0 h-full w-64 bg-surface-container/90 backdrop-blur-3xl border-r border-white/10 shadow-xl z-40">
+<div class="p-6 flex flex-col gap-4">
+<div class="flex items-center gap-3 mb-4">
+<img class="w-12 h-12 rounded-full border-2 border-primary object-cover" data-alt="A professional high-resolution profile portrait of Oto Bubu, a verified collector, looking confident against a soft-focus studio background with cool blue and slate grey tones, reflecting a high-end luxury auction platform aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6ErJFeIK6EXMKEm3ODYAxTffS2pY5PEetSwFvCCZg1iFp1usM1ZZ_kW36IMas7eWDy6mZVYu86Fl_Ml2p3aFTuiZyxWe5e8DaSGcCJD4bqFCIqber-qHut1SNL6rehavdZQu1ozgSKef1KNH3cXFlnH1ICfCt7bW2jUWY2LJhxTSDF6X0u_qRSxxI74sNt30hHomXbLhxLXdHpH0AN41m9yspjNPu0Hkmml3sv7UPo-1fNLk6JsPAKA">
+<div>
+<h3 class="text-headline-md font-headline-md text-on-surface">Oto Bubu</h3>
+<p class="text-label-md font-label-md text-on-surface-variant">Verified Collector</p>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary-fixed py-2 rounded-lg font-bold hover:brightness-110 transition-all active:scale-95">
+                Add Funds
+            </button>
+</div>
+<div class="flex-1 px-2 space-y-1 overflow-y-auto">
+<a class="text-on-surface-variant hover:bg-white/5 px-4 py-3 flex items-center gap-3 transition-all rounded-lg" href="doc.html">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<a class="bg-primary/20 text-primary border-r-4 border-primary px-4 py-3 flex items-center gap-3 transition-all rounded-lg relative" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="text-label-md font-label-md">Profile</span>
+</a>
+<a class="text-on-surface-variant hover:bg-white/5 px-4 py-3 flex items-center gap-3 transition-all rounded-lg" href="doc4.html">
+<span class="material-symbols-outlined">gavel</span>
+<span class="text-label-md font-label-md">Active Auctions</span>
+</a>
+<a class="text-on-surface-variant hover:bg-white/5 px-4 py-3 flex items-center gap-3 transition-all rounded-lg" href="doc3.html">
+<span class="material-symbols-outlined">military_tech</span>
+<span class="text-label-md font-label-md">Won Items</span>
+</a>
+<a class="text-on-surface-variant hover:bg-white/5 px-4 py-3 flex items-center gap-3 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-label-md font-label-md">Payment Methods</span>
+</a>
+<a class="text-on-surface-variant hover:bg-white/5 px-4 py-3 flex items-center gap-3 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">forum</span>
+<span class="text-label-md font-label-md">Chat</span>
+</a>
+</div>
+<div class="p-4 border-t border-white/5 mt-auto">
+<a class="text-on-surface-variant hover:bg-white/5 px-4 py-3 flex items-center gap-3 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-md font-label-md">Preferences</span>
+</a>
+<a class="text-on-surface-variant hover:bg-white/5 px-4 py-3 flex items-center gap-3 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-label-md font-label-md">Sign Out</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="min-h-screen flex flex-col lg:ml-64">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 w-full px-4 md:px-gutter pt-4 mt-4">
+  <div class="max-w-7xl mx-auto bg-surface-container/80 backdrop-blur-xl rounded-full border border-white/10 shadow-2xl px-6 py-2 flex items-center justify-between">
+    <div class="flex items-center gap-8">
+      <a href="doc.html" class="text-headline-md font-headline-md font-black tracking-tighter text-on-surface">AUCTI.ON</a>
+      <nav class="hidden md:flex items-center gap-6">
+        <a class="text-primary font-bold text-label-md font-label-md" href="doc.html">Auctions</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="doc4.html">Live</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="doc5.html">Sell</a>
+      </nav>
+    </div>
+    <div class="flex-1 max-w-md mx-8 hidden sm:block">
+      <div class="relative flex items-center bg-black/20 rounded-full px-4 py-1.5 border border-white/5 focus-within:border-primary/30 transition-all">
+        <span class="material-symbols-outlined text-sm opacity-50 mr-2">search</span>
+        <input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-on-surface-variant/50" placeholder="Search rare collectibles..." type="text">
+      </div>
+    </div>
+    <div class="flex items-center gap-4">
+      <button class="hidden md:flex items-center gap-2 bg-white/5 hover:bg-white/10 text-on-surface px-4 py-1.5 rounded-full text-label-md font-label-md border border-white/10 transition-all">
+        <span class="material-symbols-outlined text-sm">filter_list</span>
+        Filter
+      </button>
+      <button class="bg-primary text-on-primary-fixed px-4 py-1.5 rounded-full text-label-md font-label-md font-bold hover:brightness-110 transition-all active:scale-95">
+        Add New
+      </button>
+      <div class="flex items-center gap-2 ml-2">
+        <a href="doc3.html"></a><img class="w-8 h-8 rounded-full border border-primary/50 object-cover cursor-pointer hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6ErJFeIK6EXMKEm3ODYAxTffS2pY5PEetSwFvCCZg1iFp1usM1ZZ_kW36IMas7eWDy6mZVYu86Fl_Ml2p3aFTuiZyxWe5e8DaSGcCJD4bqFCIqber-qHut1SNL6rehavdZQu1ozgSKef1KNH3cXFlnH1ICfCt7bW2jUWY2LJhxTSDF6X0u_qRSxxI74sNt30hHomXbLhxLXdHpH0AN41m9yspjNPu0Hkmml3sv7UPo-1fNLk6JsPAKA" alt="User Profile"></a>
+        <span class="material-symbols-outlined text-on-surface lg:hidden cursor-pointer">menu</span>
+      </div>
+    </div>
+  </div>
+</header>
+<main class="flex-1 w-full max-w-7xl mx-auto px-4 md:px-gutter py-8">
+<!-- Hero Profile Section -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mb-12">
+<!-- Profile Header Card -->
+<div class="lg:col-span-8 glass-card rounded-3xl p-8 flex flex-col md:flex-row items-center md:items-start gap-8 relative overflow-hidden" style="transform: translateY(0px);">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[100px] -mr-32 -mt-32 rounded-full"></div>
+<div class="relative">
+<img class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-primary shadow-2xl" data-alt="A premium close-up of a high-status collector avatar in a sleek, digital environment. The character exhibits a sharp, modern appearance, wearing designer tech-apparel. Lighting is dramatic, with electric blue rim lighting against a deep slate background, emphasizing the premium nature of the AUCTI.ON platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo14YRnp9Fd8_nqZSpHj5BbPR4K0l_VNJ0G93JPhI5DKmxah7kkJehKBgegzVR52GR9uErFOHHivlud5LdqjO1M4bb7l9agGh8typx8aUyCYHklD0P70pjrOV0xQBTCNHjhtZzFrIwH7tWZHwl9EjX7e--ACmI0Zj8SlTSlUPwfsUgXX3vlmduoiVq3-tRXOksteKNZ_fqtI1_qzcUvrAF-GlP6GC85n5pqCPzDYzWf32V0uQ_do_FLg">
+<div class="absolute bottom-2 right-2 bg-primary text-on-primary-fixed p-1 rounded-full shadow-lg border-2 border-surface">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="flex-1 text-center md:text-left">
+<div class="flex flex-col md:flex-row items-center gap-3 mb-2">
+<h1 class="text-display-lg font-display-lg">Oto Bubu</h1>
+<span class="bg-secondary/20 text-secondary px-3 py-1 rounded-full text-label-md font-label-md border border-secondary/30">Verified Collector</span>
+</div>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-6 max-w-xl">Curating rare digital assets and automotive heritage since 2018. Focused on high-performance mechanicals and limited edition tech collectibles.</p>
+<div class="flex flex-wrap justify-center md:justify-start gap-4">
+<button class="bg-primary text-on-primary-fixed px-8 py-3 rounded-xl font-bold flex items-center gap-2 hover:scale-105 transition-transform active:scale-95 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">edit</span> Edit Profile
+                            </button>
+<button class="glass-card bg-transparent px-8 py-3 rounded-xl font-bold border border-white/20 hover:bg-white/5 transition-all">
+                                Share Profile
+                            </button>
+</div>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="lg:col-span-4 grid grid-cols-2 gap-4">
+<div class="glass-card rounded-3xl p-6 flex flex-col justify-between" style="transform: translateY(0px);">
+<span class="text-on-surface-variant text-label-md font-label-md">Active Auctions</span>
+<div class="flex items-baseline gap-2">
+<span class="text-headline-lg font-headline-lg">12</span>
+<span class="text-primary text-sm font-bold">↑ 2</span>
+</div>
+</div>
+<div class="glass-card rounded-3xl p-6 flex flex-col justify-between">
+<span class="text-on-surface-variant text-label-md font-label-md">Won Auctions</span>
+<div class="flex items-baseline gap-2">
+<span class="text-headline-lg font-headline-lg">34</span>
+</div>
+</div>
+<div class="glass-card rounded-3xl p-6 flex flex-col justify-between">
+<span class="text-on-surface-variant text-label-md font-label-md">Sold Items</span>
+<div class="flex items-baseline gap-2">
+<span class="text-headline-lg font-headline-lg">127</span>
+</div>
+</div>
+<div class="glass-card rounded-3xl p-6 flex flex-col justify-between border-primary/30 bg-primary/5" style="transform: translateY(0px);">
+<span class="text-on-surface-variant text-label-md font-label-md">Total Revenue</span>
+<div class="flex items-baseline gap-1">
+<span class="text-headline-lg font-headline-lg text-primary">$2,500</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Performance and Profile Details -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-gutter mb-12">
+<!-- User Details -->
+<div class="lg:col-span-1 glass-card rounded-3xl p-8" style="transform: translateY(0px);">
+<h3 class="text-headline-md font-headline-md mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">info</span>
+                        Personal Info
+                    </h3>
+<div class="space-y-6">
+<div>
+<label class="text-label-md font-label-md text-on-surface-variant block mb-1">Email Address</label>
+<p class="text-body-md font-body-md">oto.bubu@auction-prime.com</p>
+</div>
+<div>
+<label class="text-label-md font-label-md text-on-surface-variant block mb-1">Phone Number</label>
+<p class="text-body-md font-body-md">+1 (555) 012-3456</p>
+</div>
+<div>
+<label class="text-label-md font-label-md text-on-surface-variant block mb-1">Location</label>
+<p class="text-body-md font-body-md">Neo Tokyo, Japan</p>
+</div>
+<div class="pt-4 border-t border-white/10">
+<label class="text-label-md font-label-md text-on-surface-variant block mb-1">Member Since</label>
+<p class="text-body-md font-body-md">October 14, 2018</p>
+</div>
+</div>
+</div>
+<!-- Performance Graph -->
+<div class="lg:col-span-2 glass-card rounded-3xl p-8 relative overflow-hidden" style="transform: translateY(0px);">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="text-headline-md font-headline-md">Trading Performance</h3>
+<p class="text-label-md font-label-md text-on-surface-variant">Portfolio value growth over 12 months</p>
+</div>
+<div class="flex gap-2">
+<button class="bg-white/5 px-3 py-1 rounded-full text-xs hover:bg-white/10 transition-colors">1M</button>
+<button class="bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-bold transition-colors">1Y</button>
+<button class="bg-white/5 px-3 py-1 rounded-full text-xs hover:bg-white/10 transition-colors">ALL</button>
+</div>
+</div>
+<div class="h-64 w-full relative">
+
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container/40 to-transparent pointer-events-none"></div>
+</div>
+</div>
+</section>
+<!-- Active Listings Bento Grid -->
+<section class="mb-12">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-headline-lg font-headline-lg">Active Listings</h2>
+<a class="text-primary text-label-md font-label-md hover:underline flex items-center gap-1" href="#">
+                        View All <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Listing Card 1 -->
+<div class="glass-card rounded-3xl p-4 flex flex-col group" style="transform: translateY(0px);">
+<div class="relative mb-4 rounded-2xl overflow-hidden aspect-video">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A hyper-realistic close-up of a vintage 1960s luxury wristwatch with a sleek silver metallic finish and a deep navy face. The lighting is cinematic, reflecting the glassmorphic UI style with sharp highlights and soft shadows. High-end automotive design aesthetic, shot with a macro lens." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0J5eGr5IzBxTfldmzoU0xgQml_9YDGOHom5E5nprre904fazmzHyMlhT63E64fZoTHpy60oi_TvPIMNUmZ9JRqt5fbjfnne5O-eoBtktoDZf6ZRbQ99uuQ17DTeGhgTH6JoUqEisWJCyBiAbR-CSO0Rye8mgse22jgEs32KgJgVrISZTqr8V4QgPgv8KYKsLgAzsY-syaak9Pav2egFQl_apq2W7P3_4q-7sqNulWRXM6CgOa8ombKw">
+<div class="absolute top-2 left-2 bg-red-500/80 backdrop-blur-md text-white text-[10px] px-2 py-1 rounded-full font-bold uppercase tracking-wider">Ending Soon</div>
+</div>
+<h4 class="text-body-md font-headline-md mb-1 truncate">Vintage Navitimer Chronograph</h4>
+<div class="flex justify-between items-end">
+<div>
+<p class="text-on-surface-variant text-[10px] uppercase font-bold tracking-widest">Current Bid</p>
+<p class="text-headline-md font-price-display text-primary">$4,250</p>
+</div>
+<button class="bg-white/10 p-2 rounded-full hover:bg-white/20 transition-all">
+<span class="material-symbols-outlined text-sm">favorite</span>
+</button>
+</div>
+</div>
+<!-- Listing Card 2 -->
+<div class="glass-card rounded-3xl p-4 flex flex-col group" style="transform: translateY(0px);">
+<div class="relative mb-4 rounded-2xl overflow-hidden aspect-video">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A wide-angle professional shot of a rare cyberpunk-themed concept sports car, glowing with neon blue and violet accents. The car is positioned on a reflective dark slate surface that mirrors the neon glows. The overall atmosphere is futuristic and high-stakes, fitting for a premium digital auction environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbFiYeA5o_94_6UW4WuYu5s7gQcslupAOpLUycfTDf9hx_eHENO2DPRB3R_txbgri3kwN94f8G8Lqfz2AjL54P5F1LwxP5J8V22EVLYpPzPYq7KC8sk_RrldHA_RjfHJ4VVuUud0TcMuW-RiWee1enknLiuAFQ_ULEmpo_IXsIT16gNvMijgJgtK2B6VZiUWiiiej_FEnmYwf-sYmloA9JLipDgM3-WK3kpfIyk-wN2rTz_wFktFmikw">
+<div class="absolute top-2 left-2 bg-primary/80 backdrop-blur-md text-on-primary-fixed text-[10px] px-2 py-1 rounded-full font-bold uppercase tracking-wider">Hot Bid</div>
+</div>
+<h4 class="text-body-md font-headline-md mb-1 truncate">E-Vortex Prototype ZX</h4>
+<div class="flex justify-between items-end">
+<div>
+<p class="text-on-surface-variant text-[10px] uppercase font-bold tracking-widest">Current Bid</p>
+<p class="text-headline-md font-price-display text-primary">$82,000</p>
+</div>
+<button class="bg-white/10 p-2 rounded-full hover:bg-white/20 transition-all">
+<span class="material-symbols-outlined text-sm">favorite</span>
+</button>
+</div>
+</div>
+<!-- Listing Card 3 -->
+<div class="glass-card rounded-3xl p-4 flex flex-col group" style="transform: translateY(0px);">
+<div class="relative mb-4 rounded-2xl overflow-hidden aspect-video">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A highly detailed 3D digital collectible piece showing a floating, iridescent crystal geometric structure within a glass chamber. The crystal emits a soft violet glow that illuminates the surrounding dark slate and glass surfaces. High-key aesthetic with precision-engineered details and atmospheric lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSxq_a6oVD5Xx1CwqgvTpUlSZqFU2Wl36qTRdnu65MfQlne7iEXOYj2U7395VuynWtouRn4KXYMnyksGkNC4wUjgcmUGhF_89Ks0KTAg2YQr8lUjfjQ31Kj-wv59I9JL6neswLBw3pbRc_3YlIFFAYoFATSbxk2RaIoOmpqQx62QFUWSyCuO8NQWOrepY-03HNV3zYKYuk-2qVGPGB50_LgqYZ5VSw_UJgN4FBu0WOkD_uUTIrJU7xfg">
+</div>
+<h4 class="text-body-md font-headline-md mb-1 truncate">Aether Crystal #042</h4>
+<div class="flex justify-between items-end">
+<div>
+<p class="text-on-surface-variant text-[10px] uppercase font-bold tracking-widest">Current Bid</p>
+<p class="text-headline-md font-price-display text-primary">$1,100</p>
+</div>
+<button class="bg-white/10 p-2 rounded-full hover:bg-white/20 transition-all">
+<span class="material-symbols-outlined text-sm">favorite</span>
+</button>
+</div>
+</div>
+<!-- Listing Card 4 -->
+<div class="glass-card rounded-3xl p-4 flex flex-col group" style="transform: translateY(0px);">
+<div class="relative mb-4 rounded-2xl overflow-hidden aspect-video">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A professional architectural photograph of a minimalist high-tech lounge chair with integrated ambient lighting strips. The materials are carbon fiber and premium slate-colored leather. The scene is lit with a cool daylight temperature, emphasizing the texture and futuristic silhouette of the furniture piece." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaEcR1rN_xFBGXC2LG69cLmBFrIE0RXWw5YLkiqLb2IwamO2fNBcpW4XNdhlUgBRTuXCXMhsIHCipHK6DOOSHu1R_hqJOxU75Xv0WqR9ygoGDsv2DkBaB5bWFITkCzK6kCjC5o_U6stRNb7R5D7n97X6PJCyW1idnmCTtrMqNRLsOXYOp2mnUdTotL7TddVIJvY_S2y2EpYppNjJ48qV9Qn7y0aT6iZ8IkxsXAjN46naZI6m7feLy7Mw">
+</div>
+<h4 class="text-body-md font-headline-md mb-1 truncate">Orbit Carbon Lounge</h4>
+<div class="flex justify-between items-end">
+<div>
+<p class="text-on-surface-variant text-[10px] uppercase font-bold tracking-widest">Current Bid</p>
+<p class="text-headline-md font-price-display text-primary">$3,400</p>
+</div>
+<button class="bg-white/10 p-2 rounded-full hover:bg-white/20 transition-all">
+<span class="material-symbols-outlined text-sm">favorite</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Section -->
+<footer class="w-full px-gutter py-12 flex flex-col items-center border-white/5 mt-12">
+<div class="max-w-7xl w-full flex flex-col md:flex-row justify-between items-center gap-8 mb-8">
+<div class="text-center md:text-left">
+<span class="text-headline-md font-headline-md font-black text-on-surface mb-2 block">AUCTI.ON</span>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-xs">The world's premier platform for high-stakes digital and luxury physical auctions.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors text-label-md font-label-md" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors text-label-md font-label-md" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors text-label-md font-label-md" href="#">Cookies</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors text-label-md font-label-md" href="#">How Bidding Works</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors text-label-md font-label-md" href="#">Buyer Protection</a>
+</div>
+</div>
+<div class="text-on-surface-variant text-label-md font-label-md border-t border-white/5 w-full pt-8 text-center">
+                © 2024 AUCTI.ON Inc. All rights reserved.
+            </div>
+</footer>
+</div>
+<!-- Micro-interaction Scripts -->
+<script>
+        // Simple scroll effect for top nav
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('header');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-primary/10');
+                nav.classList.remove('mt-4');
+                nav.classList.add('mt-2');
+            } else {
+                nav.classList.remove('shadow-primary/10');
+                nav.classList.add('mt-4');
+                nav.classList.remove('mt-2');
+            }
+        });
+
+        // Hover scale effect for stats cards
+        const cards = document.querySelectorAll('.glass-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+
+<script src="script.js"></script>
+</body></html>

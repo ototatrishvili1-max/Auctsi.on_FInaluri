@@ -1,0 +1,804 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>AUCTI.ON | Premium Liquid Glass Marketplace</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#233144",
+                        "inverse-primary": "#565e74",
+                        "tertiary-container": "#231500",
+                        "tertiary": "#dec29a",
+                        "surface-dim": "#131315",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "on-tertiary": "#3e2d11",
+                        "on-surface-variant": "#c6c6cd",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-container-highest": "#353436",
+                        "error-container": "#93000a",
+                        "surface-variant": "#353436",
+                        "on-primary-fixed": "#131b2e",
+                        "secondary": "#b9c7e0",
+                        "background": "#131315",
+                        "on-primary-container": "#798098",
+                        "error": "#ffb4ab",
+                        "inverse-on-surface": "#303032",
+                        "primary-container": "#0f172a",
+                        "surface-tint": "#bec6e0",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#271901",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-surface": "#e4e2e4",
+                        "on-secondary-container": "#abb9d2",
+                        "surface-container-low": "#1b1b1d",
+                        "on-tertiary-container": "#957d5a",
+                        "surface-container": "#1f1f21",
+                        "on-error": "#690005",
+                        "on-primary": "#283044",
+                        "surface-bright": "#39393b",
+                        "inverse-surface": "#e4e2e4",
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "on-secondary-fixed": "#0d1c2f",
+                        "primary-fixed": "#dae2fd",
+                        "secondary-container": "#3c4a5e",
+                        "surface": "#131315",
+                        "tertiary-fixed": "#fcdeb5",
+                        "surface-container-lowest": "#0e0e10",
+                        "on-background": "#e4e2e4",
+                        "primary": "#bec6e0",
+                        "surface-container-high": "#2a2a2b",
+                        "secondary-fixed": "#d5e3fd",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "outline-variant": "#45464d",
+                        "outline": "#909097"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-padding-mobile": "16px",
+                        "panel-gap": "20px",
+                        "base": "8px",
+                        "container-padding-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "price-display": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "price-display": ["36px", {"lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #131315;
+            color: #e4e2e4;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(31, 31, 33, 0.6);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+        }
+        .liquid-gloss {
+            background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 0px;
+            height: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pulse-bid {
+            animation: pulse-shadow 2s infinite;
+        }
+        @keyframes pulse-shadow {
+            0% { box-shadow: 0 0 0 0 rgba(190, 198, 224, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(190, 198, 224, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(190, 198, 224, 0); }
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased bg-background" style="overflow: auto;">
+<!-- Header -->
+<header class="w-full fixed top-0 z-[100] px-4 pt-4">
+<nav class="max-w-7xl mx-auto flex items-center justify-between rounded-full px-6 py-2 bg-secondary-container/80 backdrop-blur-xl border border-white/10 shadow-2xl transition-all duration-300" id="top-nav">
+<div class="flex items-center gap-6">
+<a href="doc.html" class="text-headline-md font-black tracking-tighter text-on-secondary-container cursor-pointer">AUCTI.ON</a>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-primary font-bold border-b-2 border-primary py-1 text-label-md" href="doc.html">Auctions</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-md" href="doc4.html">Live</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-md" href="doc5.html">Sell</a>
+</div>
+</div>
+<div class="flex-1 max-w-md mx-8 hidden lg:block">
+<div class="relative flex items-center bg-white/5 rounded-full px-4 py-1.5 border border-white/10">
+<span class="material-symbols-outlined text-outline text-[20px]">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-outline-variant" placeholder="search key word here..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden sm:flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 hover:bg-white/10 transition-all border border-white/10 text-label-md" onclick="togglePopup('filter-popup')">
+<span class="material-symbols-outlined text-[18px]">filter_list</span> Filter
+            </button>
+<a href="doc5.html" class="hidden md:block px-4 py-1.5 rounded-full bg-primary text-on-primary font-bold hover:scale-105 active:scale-95 transition-all text-label-md">
+                Add New +
+            </a>
+<button class="p-2 rounded-full hover:bg-white/10 transition-colors" onclick="togglePopup('menu-popup')">
+<span class="material-symbols-outlined text-on-secondary-container">menu</span>
+</button>
+<a href="doc3.html" class="w-8 h-8 rounded-full border border-white/20 overflow-hidden cursor-pointer active:scale-90 transition-transform block">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A sophisticated headshot of a verified male collector with clean, modern features, set against a blurred high-end studio background that echoes the liquid glass and deep navy aesthetic of the AUCTI.ON platform. He is wearing a minimalist charcoal suit, reflecting professionalism and trust in the luxury auction market." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATwPGdcaTOyCLRJXEpmq0jXe9h_4QChe50pR0NDWJr1EZkievr-AUURi6e0uOb5kZ80sn5yXWvs24CnrKRrQxLivRdFQ20VIeFsXCBgmZyomRKeQM9RrLQO749F6QaceKsuuu9wGuoVscxrerOsip4-zkjuWyp38KhBHw1a2nyWR_DmzZz-W1qsCdV-XuvuIAAuUxskdzyFfnPbfeLSo8YLL0ras-Zsh-GakUzDuA1k7sQ0B8lbTJJLg">
+</a>
+</div>
+</nav>
+</header>
+<main class="pt-24 pb-24">
+<!-- Hero Section: Auto-playing Carousel -->
+<div class="max-w-7xl mx-auto px-4 md:px-gutter mb-12">
+<div class="relative group overflow-hidden rounded-[2.5rem] glass-card aspect-[21/9] md:aspect-[21/8]" style="--mouse-x: 1149px; --mouse-y: 3px;">
+<div class="carousel-track h-full" id="hero-carousel" style="transform: translateX(-100%);">
+<!-- Slide 1 -->
+<div class="min-w-full h-full relative flex items-center p-8 md:p-16">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-30 blur-2xl scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2dXhFrGSUVIcuO69jNYl8r798dc87c2oj0rOVg5LfxpJavC1cmCrpNEWyUwGK7AOI9gBRi-cSah0w7ufbYlb6u_xy46uDAuMHd4RK-OuRH_jRVyCAXw0wFOsFgL1Z5I_VSWB2M7RLAbNrM8jW0571dXBDKxEIYY9p-TE_spw8tPZJ49-r5fEeFerrntDJKWSlaMILsUyULKxljgG2sw8Hjdwccy6MN3-TLwMk8SvNDeIWlpUfoED4LQ">
+<div class="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent"></div>
+</div>
+<div class="relative z-10 w-full flex flex-col md:flex-row items-center justify-between gap-12">
+<div class="w-full md:w-1/2">
+<img class="max-w-[80%] md:max-w-full h-auto drop-shadow-[0_20px_60px_rgba(190,198,224,0.3)] animate-float" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2dXhFrGSUVIcuO69jNYl8r798dc87c2oj0rOVg5LfxpJavC1cmCrpNEWyUwGK7AOI9gBRi-cSah0w7ufbYlb6u_xy46uDAuMHd4RK-OuRH_jRVyCAXw0wFOsFgL1Z5I_VSWB2M7RLAbNrM8jW0571dXBDKxEIYY9p-TE_spw8tPZJ49-r5fEeFerrntDJKWSlaMILsUyULKxljgG2sw8Hjdwccy6MN3-TLwMk8SvNDeIWlpUfoED4LQ">
+</div>
+<div class="w-full md:w-1/2 p-8 rounded-3xl glass-card border-white/20 space-y-6" style="--mouse-x: 516.5103759765625px; --mouse-y: 221.38540649414062px;">
+<div class="space-y-2">
+<h1 class="text-headline-lg md:text-display-lg font-bold leading-tight">ASUS ROG Strix G15 RTX 3070</h1>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<p class="text-label-md">Current Bid: <span class="text-primary font-bold text-headline-md">100 $</span></p>
+<div class="flex items-center gap-1 px-3 py-1 bg-white/5 rounded-full text-[12px] font-bold">
+<span class="material-symbols-outlined text-[16px] text-primary">schedule</span> 22h 14m
+                                    </div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<a href="doc2.html" class="bg-[#3b82f6] text-white px-8 py-4 rounded-xl font-headline-md text-headline-md hover:brightness-110 active:scale-95 transition-all shadow-[0_0_20px_rgba(59,130,246,0.3)] text-center">Place Bid</a>
+<button class="py-4 rounded-xl bg-[#a3e635] text-[#131b2e] font-bold text-headline-md hover:bg-[#bef264] transition-all hover:scale-[1.03] active:scale-95">
+                                    Buy Now
+                                </button>
+</div>
+<p class="text-center text-display-lg font-black text-on-surface/90">1200$</p>
+</div>
+</div>
+</div>
+<!-- Slide 2 -->
+<div class="min-w-full h-full relative flex items-center p-8 md:p-16">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-30 blur-2xl scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqNGXQOMyy7lIVHU9c8eTG8lO0CINeGtuUBdFXsf7EJ2OOvnAz7DWCtXFWRuOseXFo4JOMcwtz192SYq6Q9UwPe61labigBAkTeGUERZ9-kgkPSHGfi-2WTi6-6SzuTHI_804xet629X7HayIgdxB-mx5BedUA1oZ1XDlHeRwoA6T_AXi9ktYDUXeoE8IaQ6QE7M5Ea5rB-p_t3Yik0q0pektWrWygWbmcKhZTj3nF_yQbBl2bzhsDmw">
+<div class="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent"></div>
+</div>
+<div class="relative z-10 w-full flex flex-col md:flex-row items-center justify-between gap-12">
+<div class="w-full md:w-1/2">
+<img class="max-w-[80%] md:max-w-full h-auto drop-shadow-[0_20px_60px_rgba(255,180,171,0.2)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqNGXQOMyy7lIVHU9c8eTG8lO0CINeGtuUBdFXsf7EJ2OOvnAz7DWCtXFWRuOseXFo4JOMcwtz192SYq6Q9UwPe61labigBAkTeGUERZ9-kgkPSHGfi-2WTi6-6SzuTHI_804xet629X7HayIgdxB-mx5BedUA1oZ1XDlHeRwoA6T_AXi9ktYDUXeoE8IaQ6QE7M5Ea5rB-p_t3Yik0q0pektWrWygWbmcKhZTj3nF_yQbBl2bzhsDmw">
+</div>
+<div class="w-full md:w-1/2 p-8 rounded-3xl glass-card border-white/20 space-y-6" style="--mouse-x: 505.5103759765625px; --mouse-y: 4.385406494140625px;">
+<div class="space-y-2">
+<h1 class="text-headline-lg md:text-display-lg font-bold leading-tight">Nvidia RTX 4090 OC Edition</h1>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<p class="text-label-md">Current Bid: <span class="text-primary font-bold text-headline-md">1,850 $</span></p>
+<div class="flex items-center gap-1 px-3 py-1 bg-white/5 rounded-full text-[12px] font-bold">
+<span class="material-symbols-outlined text-[16px] text-primary">schedule</span> 04h 52m
+                                    </div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="py-4 rounded-xl bg-primary text-on-primary font-bold text-headline-md pulse-bid transition-all hover:scale-[1.03]">Place Bid</button>
+<button class="py-4 rounded-xl bg-[#a3e635] text-[#131b2e] font-bold text-headline-md hover:bg-[#bef264] transition-all hover:scale-[1.03]">Buy Now</button>
+</div>
+<p class="text-center text-display-lg font-black text-on-surface/90">2,100$</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Carousel Controls -->
+<button class="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass-card border-white/20 flex items-center justify-center text-on-surface hover:bg-white/20 transition-all opacity-0 group-hover:opacity-100" onclick="moveCarousel(-1)">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass-card border-white/20 flex items-center justify-center text-on-surface hover:bg-white/20 transition-all opacity-0 group-hover:opacity-100" onclick="moveCarousel(1)" style="--mouse-x: 12.6666259765625px; --mouse-y: 19.33331298828125px;">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+<div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3" id="carousel-dots">
+<div class="h-3 rounded-full cursor-pointer transition-all duration-300 bg-white/20 w-3" onclick="goToSlide(0)"></div>
+<div class="h-3 rounded-full cursor-pointer transition-all duration-300 hover:bg-white/40 bg-primary w-8" onclick="goToSlide(1)"></div>
+</div>
+</div>
+</div>
+<!-- Today's Auctions -->
+<section class="max-w-7xl mx-auto px-4 md:px-gutter mt-16">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-headline-md font-bold px-6 py-2 rounded-full bg-white/5 border border-white/10 inline-block">Today's auctions</h2>
+<div class="flex gap-2"><button class="w-10 h-10 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all flex items-center justify-center"><span class="material-symbols-outlined">chevron_left</span></button><button class="w-10 h-10 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all flex items-center justify-center"><span class="material-symbols-outlined">chevron_right</span></button></div>
+</div>
+<div class="flex gap-6 overflow-x-auto pb-8 custom-scrollbar scroll-smooth">
+<div class="min-w-[280px] group cursor-pointer">
+<div class="glass-card rounded-3xl p-4 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2 border-white/5 hover:border-white/20" style="--mouse-x: 7.032388687133789px; --mouse-y: 238.25634765625px;">
+<div class="relative rounded-2xl overflow-hidden aspect-video mb-4">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8F0CmL995EqtB0qTCp7MXWW6M9rzXwCdSFtG68UiU_js_BRvBIYtzmpHjhuPRSGqz81Vr2ipQo5b_iLQx7wrW6hYKKkZ34_gHZk_qStnLweGJG1nYaQeR6YBFKB_R0SQuiN56UgrwVk6bvA4UC9VYE_xlqVM_9kbMJF9z_zZjmIsGBDiBCiBR2eXSFKsa32tOX-OQuKUpBaBsRwKBGWw8z1E_4LauyDQemA2w_OV0a-2ehWS6TPFxwg">
+<div class="absolute top-2 left-2 px-2 py-1 bg-primary text-on-primary text-[10px] font-bold rounded-full uppercase tracking-widest">Live</div>
+</div>
+<h3 class="font-bold text-body-lg mb-1 truncate">Smartphones Bundle</h3>
+<div class="flex justify-between items-center">
+<span class="text-primary font-black">450$</span>
+<span class="text-[11px] text-outline">12 Bids</span>
+</div>
+</div>
+</div>
+<div class="min-w-[280px] group cursor-pointer">
+<div class="glass-card rounded-3xl p-4 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2 border-white/5 hover:border-white/20" style="--mouse-x: 57px; --mouse-y: 82.1353759765625px;">
+<div class="relative rounded-2xl overflow-hidden aspect-video mb-4">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6K3vU0oWl7wfhpPoy8kbvAZLYmEFZECJXc4C6TtkKwiMHpTO19TM9uT77Hs-b5L5hHu1ZgB772qUjM9sxHQo8KgAx8oC9aI9ZMG2PknqA8aXjHtCzNNtkIwr5G5FC_azGkuyt_O9wsKEb8JMiyS8Nk-82AIQUrOEFJAY3Rrvbq4mC2H4v3Tv7yrRXB2R6Bwn6ROGv8Hbaak7epAQApkwmaBEznYPmqP_uUWhdOraTf1QWV286WS1GFg">
+<div class="absolute top-2 left-2 px-2 py-1 bg-primary text-on-primary text-[10px] font-bold rounded-full uppercase tracking-widest">Live</div>
+</div>
+<h3 class="font-bold text-body-lg mb-1 truncate">Thoroughbred Horse</h3>
+<div class="flex justify-between items-center">
+<span class="text-primary font-black">2,500$</span>
+<span class="text-[11px] text-outline">12 Bids</span>
+</div>
+</div>
+</div>
+<div class="min-w-[280px] group cursor-pointer">
+<div class="glass-card rounded-3xl p-4 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2 border-white/5 hover:border-white/20" style="--mouse-x: 176px; --mouse-y: 243.1353759765625px;">
+<div class="relative rounded-2xl overflow-hidden aspect-video mb-4">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCIeGAn6QKLOWoQAwa9IHyHnNc4X8dOLlkMAoD_l88qDx-0wuTcbJhH9ZZbPpWfMiIxjTygerL7kFcuQ7ScfGJJRe38dMbcbkFdouSujcviLrcq0LYsgQFM95_vzzI_wtQhoukYgBQbb_dKJBhUN6-Uum0UZyAph2qHKFNBzg8abJf994w-tSNOKUqtPplXagIp-DLMA8NqLHIXUh9NxUwz56KHECyHuXte9qwx87d21pbVaxB57KlFg">
+<div class="absolute top-2 left-2 px-2 py-1 bg-primary text-on-primary text-[10px] font-bold rounded-full uppercase tracking-widest">Live</div>
+</div>
+<h3 class="font-bold text-body-lg mb-1 truncate">Premium Backpack</h3>
+<div class="flex justify-between items-center">
+<span class="text-primary font-black">85$</span>
+<span class="text-[11px] text-outline">12 Bids</span>
+</div>
+</div>
+</div>
+<div class="min-w-[280px] group cursor-pointer">
+<div class="glass-card rounded-3xl p-4 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2 border-white/5 hover:border-white/20" style="--mouse-x: 52px; --mouse-y: 18.1353759765625px;">
+<div class="relative rounded-2xl overflow-hidden aspect-video mb-4">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsAxIia_MnA9o9Uovfif8LCrPMX_t4vWPjpGw8LXuQcvKrjuCSqlniAtcUxUT1BuJZQunBchO8D8q9uS03ueOozKm3_KcFnc0e8DXNBr73M3zboGcVR0krHcqHAfMpDmNP_E2-1UtZiLtfWyABDIeH4_OMoT8d9Byrdbxo5oEKZ5znnqiRDGSFt2x14kcJDdZQDxXsCxkSJVI98MlSdDs0_RsnDWLfgxcmvYVAn0SqGHMSSzh4Sx_v3Q">
+<div class="absolute top-2 left-2 px-2 py-1 bg-primary text-on-primary text-[10px] font-bold rounded-full uppercase tracking-widest">Live</div>
+</div>
+<h3 class="font-bold text-body-lg mb-1 truncate">Bird Lamp Sculpture</h3>
+<div class="flex justify-between items-center">
+<span class="text-primary font-black">120$</span>
+<span class="text-[11px] text-outline">12 Bids</span>
+</div>
+</div>
+</div>
+<div class="min-w-[280px] group cursor-pointer">
+<div class="glass-card rounded-3xl p-4 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2 border-white/5 hover:border-white/20">
+<div class="relative rounded-2xl overflow-hidden aspect-video mb-4">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGmUmqYVPKdt8LA9hsfgd0eDgxLXETiMevWgkWgmiIjEV5JlvmRJw6E4L_7xQj9rmwhMlkFsuykHmcM25R1x3HP0dgVeKdMZwRasNZft86eC93OOYyKpj5BfR79xRZaHZFpJvnGwtRLVMljWbz-G0gnt0LBMteV8zd6Oy0hHFzWpAI3N10tlmYLpS-5PUczWIB-Bm1nl38TzvDXmavo2uHkJSoMwUaA5u_vU7d_jLu7lhz29b2T1Qqsw">
+<div class="absolute top-2 left-2 px-2 py-1 bg-primary text-on-primary text-[10px] font-bold rounded-full uppercase tracking-widest">Live</div>
+</div>
+<h3 class="font-bold text-body-lg mb-1 truncate">Luxury Villa</h3>
+<div class="flex justify-between items-center">
+<span class="text-primary font-black">1.2M$</span>
+<span class="text-[11px] text-outline">12 Bids</span>
+</div>
+</div>
+</div>
+<div class="min-w-[280px] group cursor-pointer">
+<div class="glass-card rounded-3xl p-4 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2 border-white/5 hover:border-white/20">
+<div class="relative rounded-2xl overflow-hidden aspect-video mb-4">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqNGXQOMyy7lIVHU9c8eTG8lO0CINeGtuUBdFXsf7EJ2OOvnAz7DWCtXFWRuOseXFo4JOMcwtz192SYq6Q9UwPe61labigBAkTeGUERZ9-kgkPSHGfi-2WTi6-6SzuTHI_804xet629X7HayIgdxB-mx5BedUA1oZ1XDlHeRwoA6T_AXi9ktYDUXeoE8IaQ6QE7M5Ea5rB-p_t3Yik0q0pektWrWygWbmcKhZTj3nF_yQbBl2bzhsDmw">
+<div class="absolute top-2 left-2 px-2 py-1 bg-primary text-on-primary text-[10px] font-bold rounded-full uppercase tracking-widest">Live</div>
+</div>
+<h3 class="font-bold text-body-lg mb-1 truncate">RTX 3070 Graphics</h3>
+<div class="flex justify-between items-center">
+<span class="text-primary font-black">350$</span>
+<span class="text-[11px] text-outline">12 Bids</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Recommended Grid -->
+<section class="max-w-7xl mx-auto px-4 md:px-gutter mt-16">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-headline-md font-bold px-6 py-2 rounded-full bg-white/5 border border-white/10 inline-block">Recommended</h2>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 transition-all duration-700 overflow-hidden" id="recommended-grid" style="max-height: 800px;">
+<script>
+                const recItems = [
+                    { img: "https://lh3.googleusercontent.com/aida-public/AB6AXuA8F0CmL995EqtB0qTCp7MXWW6M9rzXwCdSFtG68UiU_js_BRvBIYtzmpHjhuPRSGqz81Vr2ipQo5b_iLQx7wrW6hYKKkZ34_gHZk_qStnLweGJG1nYaQeR6YBFKB_R0SQuiN56UgrwVk6bvA4UC9VYE_xlqVM_9kbMJF9z_zZjmIsGBDiBCiBR2eXSFKsa32tOX-OQuKUpBaBsRwKBGWw8z1E_4LauyDQemA2w_OV0a-2ehWS6TPFxwg", title: "Tool Chest Red", price: "220$" },
+                    { img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB6K3vU0oWl7wfhpPoy8kbvAZLYmEFZECJXc4C6TtkKwiMHpTO19TM9uT77Hs-b5L5hHu1ZgB772qUjM9sxHQo8KgAx8oC9aI9ZMG2PknqA8aXjHtCzNNtkIwr5G5FC_azGkuyt_O9wsKEb8JMiyS8Nk-82AIQUrOEFJAY3Rrvbq4mC2H4v3Tv7yrRXB2R6Bwn6ROGv8Hbaak7epAQApkwmaBEznYPmqP_uUWhdOraTf1QWV286WS1GFg", title: "Professional Power Set", price: "155$" },
+                    { img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBCIeGAn6QKLOWoQAwa9IHyHnNc4X8dOLlkMAoD_l88qDx-0wuTcbJhH9ZZbPpWfMiIxjTygerL7kFcuQ7ScfGJJRe38dMbcbkFdouSujcviLrcq0LYsgQFM95_vzzI_wtQhoukYgBQbb_dKJBhUN6-Uum0UZyAph2qHKFNBzg8abJf994w-tSNOKUqtPplXagIp-DLMA8NqLHIXUh9NxUwz56KHECyHuXte9qwx87d21pbVaxB57KlFg", title: "Swedish Ladder Gym", price: "400$" },
+                    { img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDsAxIia_MnA9o9Uovfif8LCrPMX_t4vWPjpGw8LXuQcvKrjuCSqlniAtcUxUT1BuJZQunBchO8D8q9uS03ueOozKm3_KcFnc0e8DXNBr73M3zboGcVR0krHcqHAfMpDmNP_E2-1UtZiLtfWyABDIeH4_OMoT8d9Byrdbxo5oEKZ5znnqiRDGSFt2x14kcJDdZQDxXsCxkSJVI98MlSdDs0_RsnDWLfgxcmvYVAn0SqGHMSSzh4Sx_v3Q", title: "Chrome Dumbbells", price: "80$" },
+                    { img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCGmUmqYVPKdt8LA9hsfgd0eDgxLXETiMevWgkWgmiIjEV5JlvmRJw6E4L_7xQj9rmwhMlkFsuykHmcM25R1x3HP0dgVeKdMZwRasNZft86eC93OOYyKpj5BfR79xRZaHZFpJvnGwtRLVMljWbz-G0gnt0LBMteV8zd6Oy0hHFzWpAI3N10tlmYLpS-5PUczWIB-Bm1nl38TzvDXmavo2uHkJSoMwUaA5u_vU7d_jLu7lhz29b2T1Qqsw", title: "Luxury Sedan Silver", price: "42,000$" },
+                    { img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDqNGXQOMyy7lIVHU9c8eTG8lO0CINeGtuUBdFXsf7EJ2OOvnAz7DWCtXFWRuOseXFo4JOMcwtz192SYq6Q9UwPe61labigBAkTeGUERZ9-kgkPSHGfi-2WTi6-6SzuTHI_804xet629X7HayIgdxB-mx5BedUA1oZ1XDlHeRwoA6T_AXi9ktYDUXeoE8IaQ6QE7M5Ea5rB-p_t3Yik0q0pektWrWygWbmcKhZTj3nF_yQbBl2bzhsDmw", title: "Gold RAM Sticks", price: "120$" },
+                    { img: "https://lh3.googleusercontent.com/aida-public/AB6AXuC2dXhFrGSUVIcuO69jNYl8r798dc87c2oj0rOVg5LfxpJavC1cmCrpNEWyUwGK7AOI9gBRi-cSah0w7ufbYlb6u_xy46uDAuMHd4RK-OuRH_jRVyCAXw0wFOsFgL1Z5I_VSWB2M7RLAbNrM8jW0571dXBDKxEIYY9p-TE_spw8tPZJ49-r5fEeFerrntDJKWSlaMILsUyULKxljgG2sw8Hjdwccy6MN3-TLwMk8SvNDeIWlpUfoED4LQ", title: "RTX 4090 GPU", price: "1,900$" },
+                    { img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBdazxqRKQF4lvIFLdm7HE6BQ9iYwWnuu-It_Vjq7Dwsph_4s-0laFmue8TzohN-iM0CWQwEZOI500y6R7YTktd76Wzuvd5VfrGrX7AJnzETwx-BQ0m6Y0bDtxc7dieFbN4LLw-KX8M9SiVpldfbOHJeClbZEoKfh6I1JA8ksAVcbvdxeuBmcyiyLGjxZuYkkF4SdbOcyLpq3h-PYu2M7GLNTEtnFb_1BFO49KrtsDoj1gEAtNc5J0utQ", title: "Cordless Drill Yellow", price: "65$" },
+                    { img: "https://lh3.googleusercontent.com/aida-public/AB6AXuA8F0CmL995EqtB0qTCp7MXWW6M9rzXwCdSFtG68UiU_js_BRvBIYtzmpHjhuPRSGqz81Vr2ipQo5b_iLQx7wrW6hYKKkZ34_gHZk_qStnLweGJG1nYaQeR6YBFKB_R0SQuiN56UgrwVk6bvA4UC9VYE_xlqVM_9kbMJF9z_zZjmIsGBDiBCiBR2eXSFKsa32tOX-OQuKUpBaBsRwKBGWw8z1E_4LauyDQemA2w_OV0a-2ehWS6TPFxwg", title: "Vintage Camera", price: "180$" },
+                    { img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB6K3vU0oWl7wfhpPoy8kbvAZLYmEFZECJXc4C6TtkKwiMHpTO19TM9uT77Hs-b5L5hHu1ZgB772qUjM9sxHQo8KgAx8oC9aI9ZMG2PknqA8aXjHtCzNNtkIwr5G5FC_azGkuyt_O9wsKEb8JMiyS8Nk-82AIQUrOEFJAY3Rrvbq4mC2H4v3Tv7yrRXB2R6Bwn6ROGv8Hbaak7epAQApkwmaBEznYPmqP_uUWhdOraTf1QWV286WS1GFg", title: "Designer Chair", price: "310$" },
+                    { img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBCIeGAn6QKLOWoQAwa9IHyHnNc4X8dOLlkMAoD_l88qDx-0wuTcbJhH9ZZbPpWfMiIxjTygerL7kFcuQ7ScfGJJRe38dMbcbkFdouSujcviLrcq0LYsgQFM95_vzzI_wtQhoukYgBQbb_dKJBhUN6-Uum0UZyAph2qHKFNBzg8abJf994w-tSNOKUqtPplXagIp-DLMA8NqLHIXUh9NxUwz56KHECyHuXte9qwx87d21pbVaxB57KlFg", title: "Acoustic Guitar", price: "550$" },
+                    { img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDsAxIia_MnA9o9Uovfif8LCrPMX_t4vWPjpGw8LXuQcvKrjuCSqlniAtcUxUT1BuJZQunBchO8D8q9uS03ueOozKm3_KcFnc0e8DXNBr73M3zboGcVR0krHcqHAfMpDmNP_E2-1UtZiLtfWyABDIeH4_OMoT8d9Byrdbxo5oEKZ5znnqiRDGSFt2x14kcJDdZQDxXsCxkSJVI98MlSdDs0_RsnDWLfgxcmvYVAn0SqGHMSSzh4Sx_v3Q", title: "Smart Watch Elite", price: "145$" }
+                ];
+
+                document.write(recItems.map(item => `
+                    <div class="glass-card rounded-3xl p-3 group cursor-pointer transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-white/5">
+                        <div class="rounded-2xl w-full aspect-square overflow-hidden mb-4 relative">
+                            <img src="${item.img}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <button class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:text-red-500 transition-colors">
+                                <span class="material-symbols-outlined text-[18px]">favorite</span>
+                            </button>
+                        </div>
+                        <h3 class="font-bold text-body-md truncate px-1">${item.title}</h3>
+                        <div class="flex justify-between items-center mt-2 px-1 pb-1">
+                            <p class="text-primary font-bold">${item.price}</p>
+                            <span class="text-[10px] text-outline bg-white/5 px-2 py-0.5 rounded-full">New</span>
+                        </div>
+                    </div>
+                `).join(''));
+            </script>
+                    <div class="glass-card rounded-3xl p-3 group cursor-pointer transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-white/5">
+                        <div class="rounded-2xl w-full aspect-square overflow-hidden mb-4 relative">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8F0CmL995EqtB0qTCp7MXWW6M9rzXwCdSFtG68UiU_js_BRvBIYtzmpHjhuPRSGqz81Vr2ipQo5b_iLQx7wrW6hYKKkZ34_gHZk_qStnLweGJG1nYaQeR6YBFKB_R0SQuiN56UgrwVk6bvA4UC9VYE_xlqVM_9kbMJF9z_zZjmIsGBDiBCiBR2eXSFKsa32tOX-OQuKUpBaBsRwKBGWw8z1E_4LauyDQemA2w_OV0a-2ehWS6TPFxwg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <button class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:text-red-500 transition-colors">
+                                <span class="material-symbols-outlined text-[18px]">favorite</span>
+                            </button>
+                        </div>
+                        <h3 class="font-bold text-body-md truncate px-1">Tool Chest Red</h3>
+                        <div class="flex justify-between items-center mt-2 px-1 pb-1">
+                            <p class="text-primary font-bold">220$</p>
+                            <span class="text-[10px] text-outline bg-white/5 px-2 py-0.5 rounded-full">New</span>
+                        </div>
+                    </div>
+                
+                    <div class="glass-card rounded-3xl p-3 group cursor-pointer transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-white/5" style="--mouse-x: 144.14288330078125px; --mouse-y: 5.909423828125px;">
+                        <div class="rounded-2xl w-full aspect-square overflow-hidden mb-4 relative">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6K3vU0oWl7wfhpPoy8kbvAZLYmEFZECJXc4C6TtkKwiMHpTO19TM9uT77Hs-b5L5hHu1ZgB772qUjM9sxHQo8KgAx8oC9aI9ZMG2PknqA8aXjHtCzNNtkIwr5G5FC_azGkuyt_O9wsKEb8JMiyS8Nk-82AIQUrOEFJAY3Rrvbq4mC2H4v3Tv7yrRXB2R6Bwn6ROGv8Hbaak7epAQApkwmaBEznYPmqP_uUWhdOraTf1QWV286WS1GFg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <button class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:text-red-500 transition-colors">
+                                <span class="material-symbols-outlined text-[18px]">favorite</span>
+                            </button>
+                        </div>
+                        <h3 class="font-bold text-body-md truncate px-1">Professional Power Set</h3>
+                        <div class="flex justify-between items-center mt-2 px-1 pb-1">
+                            <p class="text-primary font-bold">155$</p>
+                            <span class="text-[10px] text-outline bg-white/5 px-2 py-0.5 rounded-full">New</span>
+                        </div>
+                    </div>
+                
+                    <div class="glass-card rounded-3xl p-3 group cursor-pointer transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-white/5" style="--mouse-x: 246.3499755859375px; --mouse-y: 174.552490234375px;">
+                        <div class="rounded-2xl w-full aspect-square overflow-hidden mb-4 relative">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCIeGAn6QKLOWoQAwa9IHyHnNc4X8dOLlkMAoD_l88qDx-0wuTcbJhH9ZZbPpWfMiIxjTygerL7kFcuQ7ScfGJJRe38dMbcbkFdouSujcviLrcq0LYsgQFM95_vzzI_wtQhoukYgBQbb_dKJBhUN6-Uum0UZyAph2qHKFNBzg8abJf994w-tSNOKUqtPplXagIp-DLMA8NqLHIXUh9NxUwz56KHECyHuXte9qwx87d21pbVaxB57KlFg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <button class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:text-red-500 transition-colors">
+                                <span class="material-symbols-outlined text-[18px]">favorite</span>
+                            </button>
+                        </div>
+                        <h3 class="font-bold text-body-md truncate px-1">Swedish Ladder Gym</h3>
+                        <div class="flex justify-between items-center mt-2 px-1 pb-1">
+                            <p class="text-primary font-bold">400$</p>
+                            <span class="text-[10px] text-outline bg-white/5 px-2 py-0.5 rounded-full">New</span>
+                        </div>
+                    </div>
+                
+                    <div class="glass-card rounded-3xl p-3 group cursor-pointer transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-white/5">
+                        <div class="rounded-2xl w-full aspect-square overflow-hidden mb-4 relative">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsAxIia_MnA9o9Uovfif8LCrPMX_t4vWPjpGw8LXuQcvKrjuCSqlniAtcUxUT1BuJZQunBchO8D8q9uS03ueOozKm3_KcFnc0e8DXNBr73M3zboGcVR0krHcqHAfMpDmNP_E2-1UtZiLtfWyABDIeH4_OMoT8d9Byrdbxo5oEKZ5znnqiRDGSFt2x14kcJDdZQDxXsCxkSJVI98MlSdDs0_RsnDWLfgxcmvYVAn0SqGHMSSzh4Sx_v3Q" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <button class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:text-red-500 transition-colors">
+                                <span class="material-symbols-outlined text-[18px]">favorite</span>
+                            </button>
+                        </div>
+                        <h3 class="font-bold text-body-md truncate px-1">Chrome Dumbbells</h3>
+                        <div class="flex justify-between items-center mt-2 px-1 pb-1">
+                            <p class="text-primary font-bold">80$</p>
+                            <span class="text-[10px] text-outline bg-white/5 px-2 py-0.5 rounded-full">New</span>
+                        </div>
+                    </div>
+                
+                    <div class="glass-card rounded-3xl p-3 group cursor-pointer transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-white/5">
+                        <div class="rounded-2xl w-full aspect-square overflow-hidden mb-4 relative">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGmUmqYVPKdt8LA9hsfgd0eDgxLXETiMevWgkWgmiIjEV5JlvmRJw6E4L_7xQj9rmwhMlkFsuykHmcM25R1x3HP0dgVeKdMZwRasNZft86eC93OOYyKpj5BfR79xRZaHZFpJvnGwtRLVMljWbz-G0gnt0LBMteV8zd6Oy0hHFzWpAI3N10tlmYLpS-5PUczWIB-Bm1nl38TzvDXmavo2uHkJSoMwUaA5u_vU7d_jLu7lhz29b2T1Qqsw" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <button class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:text-red-500 transition-colors">
+                                <span class="material-symbols-outlined text-[18px]">favorite</span>
+                            </button>
+                        </div>
+                        <h3 class="font-bold text-body-md truncate px-1">Luxury Sedan Silver</h3>
+                        <div class="flex justify-between items-center mt-2 px-1 pb-1">
+                            <p class="text-primary font-bold">42,000$</p>
+                            <span class="text-[10px] text-outline bg-white/5 px-2 py-0.5 rounded-full">New</span>
+                        </div>
+                    </div>
+                
+                    <div class="glass-card rounded-3xl p-3 group cursor-pointer transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-white/5" style="--mouse-x: 169.29983520507812px; --mouse-y: 248.1075439453125px;">
+                        <div class="rounded-2xl w-full aspect-square overflow-hidden mb-4 relative">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqNGXQOMyy7lIVHU9c8eTG8lO0CINeGtuUBdFXsf7EJ2OOvnAz7DWCtXFWRuOseXFo4JOMcwtz192SYq6Q9UwPe61labigBAkTeGUERZ9-kgkPSHGfi-2WTi6-6SzuTHI_804xet629X7HayIgdxB-mx5BedUA1oZ1XDlHeRwoA6T_AXi9ktYDUXeoE8IaQ6QE7M5Ea5rB-p_t3Yik0q0pektWrWygWbmcKhZTj3nF_yQbBl2bzhsDmw" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <button class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:text-red-500 transition-colors">
+                                <span class="material-symbols-outlined text-[18px]">favorite</span>
+                            </button>
+                        </div>
+                        <h3 class="font-bold text-body-md truncate px-1">Gold RAM Sticks</h3>
+                        <div class="flex justify-between items-center mt-2 px-1 pb-1">
+                            <p class="text-primary font-bold">120$</p>
+                            <span class="text-[10px] text-outline bg-white/5 px-2 py-0.5 rounded-full">New</span>
+                        </div>
+                    </div>
+                
+                    <div class="glass-card rounded-3xl p-3 group cursor-pointer transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-white/5" style="--mouse-x: 67.34271240234375px; --mouse-y: 243.8765869140625px;">
+                        <div class="rounded-2xl w-full aspect-square overflow-hidden mb-4 relative">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2dXhFrGSUVIcuO69jNYl8r798dc87c2oj0rOVg5LfxpJavC1cmCrpNEWyUwGK7AOI9gBRi-cSah0w7ufbYlb6u_xy46uDAuMHd4RK-OuRH_jRVyCAXw0wFOsFgL1Z5I_VSWB2M7RLAbNrM8jW0571dXBDKxEIYY9p-TE_spw8tPZJ49-r5fEeFerrntDJKWSlaMILsUyULKxljgG2sw8Hjdwccy6MN3-TLwMk8SvNDeIWlpUfoED4LQ" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <button class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:text-red-500 transition-colors">
+                                <span class="material-symbols-outlined text-[18px]">favorite</span>
+                            </button>
+                        </div>
+                        <h3 class="font-bold text-body-md truncate px-1">RTX 4090 GPU</h3>
+                        <div class="flex justify-between items-center mt-2 px-1 pb-1">
+                            <p class="text-primary font-bold">1,900$</p>
+                            <span class="text-[10px] text-outline bg-white/5 px-2 py-0.5 rounded-full">New</span>
+                        </div>
+                    </div>
+                
+                    <div class="glass-card rounded-3xl p-3 group cursor-pointer transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-white/5" style="--mouse-x: 282.2393798828125px; --mouse-y: 197.697998046875px;">
+                        <div class="rounded-2xl w-full aspect-square overflow-hidden mb-4 relative">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdazxqRKQF4lvIFLdm7HE6BQ9iYwWnuu-It_Vjq7Dwsph_4s-0laFmue8TzohN-iM0CWQwEZOI500y6R7YTktd76Wzuvd5VfrGrX7AJnzETwx-BQ0m6Y0bDtxc7dieFbN4LLw-KX8M9SiVpldfbOHJeClbZEoKfh6I1JA8ksAVcbvdxeuBmcyiyLGjxZuYkkF4SdbOcyLpq3h-PYu2M7GLNTEtnFb_1BFO49KrtsDoj1gEAtNc5J0utQ" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <button class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:text-red-500 transition-colors">
+                                <span class="material-symbols-outlined text-[18px]">favorite</span>
+                            </button>
+                        </div>
+                        <h3 class="font-bold text-body-md truncate px-1">Cordless Drill Yellow</h3>
+                        <div class="flex justify-between items-center mt-2 px-1 pb-1">
+                            <p class="text-primary font-bold">65$</p>
+                            <span class="text-[10px] text-outline bg-white/5 px-2 py-0.5 rounded-full">New</span>
+                        </div>
+                    </div>
+                
+                    <div class="glass-card rounded-3xl p-3 group cursor-pointer transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-white/5">
+                        <div class="rounded-2xl w-full aspect-square overflow-hidden mb-4 relative">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8F0CmL995EqtB0qTCp7MXWW6M9rzXwCdSFtG68UiU_js_BRvBIYtzmpHjhuPRSGqz81Vr2ipQo5b_iLQx7wrW6hYKKkZ34_gHZk_qStnLweGJG1nYaQeR6YBFKB_R0SQuiN56UgrwVk6bvA4UC9VYE_xlqVM_9kbMJF9z_zZjmIsGBDiBCiBR2eXSFKsa32tOX-OQuKUpBaBsRwKBGWw8z1E_4LauyDQemA2w_OV0a-2ehWS6TPFxwg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <button class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:text-red-500 transition-colors">
+                                <span class="material-symbols-outlined text-[18px]">favorite</span>
+                            </button>
+                        </div>
+                        <h3 class="font-bold text-body-md truncate px-1">Vintage Camera</h3>
+                        <div class="flex justify-between items-center mt-2 px-1 pb-1">
+                            <p class="text-primary font-bold">180$</p>
+                            <span class="text-[10px] text-outline bg-white/5 px-2 py-0.5 rounded-full">New</span>
+                        </div>
+                    </div>
+                
+                    <div class="glass-card rounded-3xl p-3 group cursor-pointer transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-white/5" style="--mouse-x: 293.7515869140625px; --mouse-y: 198.797119140625px;">
+                        <div class="rounded-2xl w-full aspect-square overflow-hidden mb-4 relative">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6K3vU0oWl7wfhpPoy8kbvAZLYmEFZECJXc4C6TtkKwiMHpTO19TM9uT77Hs-b5L5hHu1ZgB772qUjM9sxHQo8KgAx8oC9aI9ZMG2PknqA8aXjHtCzNNtkIwr5G5FC_azGkuyt_O9wsKEb8JMiyS8Nk-82AIQUrOEFJAY3Rrvbq4mC2H4v3Tv7yrRXB2R6Bwn6ROGv8Hbaak7epAQApkwmaBEznYPmqP_uUWhdOraTf1QWV286WS1GFg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <button class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:text-red-500 transition-colors">
+                                <span class="material-symbols-outlined text-[18px]">favorite</span>
+                            </button>
+                        </div>
+                        <h3 class="font-bold text-body-md truncate px-1">Designer Chair</h3>
+                        <div class="flex justify-between items-center mt-2 px-1 pb-1">
+                            <p class="text-primary font-bold">310$</p>
+                            <span class="text-[10px] text-outline bg-white/5 px-2 py-0.5 rounded-full">New</span>
+                        </div>
+                    </div>
+                
+                    <div class="glass-card rounded-3xl p-3 group cursor-pointer transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-white/5" style="--mouse-x: 230.00177001953125px; --mouse-y: 2.3980712890625px;">
+                        <div class="rounded-2xl w-full aspect-square overflow-hidden mb-4 relative">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCIeGAn6QKLOWoQAwa9IHyHnNc4X8dOLlkMAoD_l88qDx-0wuTcbJhH9ZZbPpWfMiIxjTygerL7kFcuQ7ScfGJJRe38dMbcbkFdouSujcviLrcq0LYsgQFM95_vzzI_wtQhoukYgBQbb_dKJBhUN6-Uum0UZyAph2qHKFNBzg8abJf994w-tSNOKUqtPplXagIp-DLMA8NqLHIXUh9NxUwz56KHECyHuXte9qwx87d21pbVaxB57KlFg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <button class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:text-red-500 transition-colors">
+                                <span class="material-symbols-outlined text-[18px]">favorite</span>
+                            </button>
+                        </div>
+                        <h3 class="font-bold text-body-md truncate px-1">Acoustic Guitar</h3>
+                        <div class="flex justify-between items-center mt-2 px-1 pb-1">
+                            <p class="text-primary font-bold">550$</p>
+                            <span class="text-[10px] text-outline bg-white/5 px-2 py-0.5 rounded-full">New</span>
+                        </div>
+                    </div>
+                
+                    <div class="glass-card rounded-3xl p-3 group cursor-pointer transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-white/5" style="--mouse-x: 214px; --mouse-y: 18.395751953125px;">
+                        <div class="rounded-2xl w-full aspect-square overflow-hidden mb-4 relative">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsAxIia_MnA9o9Uovfif8LCrPMX_t4vWPjpGw8LXuQcvKrjuCSqlniAtcUxUT1BuJZQunBchO8D8q9uS03ueOozKm3_KcFnc0e8DXNBr73M3zboGcVR0krHcqHAfMpDmNP_E2-1UtZiLtfWyABDIeH4_OMoT8d9Byrdbxo5oEKZ5znnqiRDGSFt2x14kcJDdZQDxXsCxkSJVI98MlSdDs0_RsnDWLfgxcmvYVAn0SqGHMSSzh4Sx_v3Q" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <button class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:text-red-500 transition-colors">
+                                <span class="material-symbols-outlined text-[18px]">favorite</span>
+                            </button>
+                        </div>
+                        <h3 class="font-bold text-body-md truncate px-1">Smart Watch Elite</h3>
+                        <div class="flex justify-between items-center mt-2 px-1 pb-1">
+                            <p class="text-primary font-bold">145$</p>
+                            <span class="text-[10px] text-outline bg-white/5 px-2 py-0.5 rounded-full">New</span>
+                        </div>
+                    </div>
+                
+</div>
+<div class="mt-12 flex justify-center">
+<button class="text-primary text-label-md font-bold flex items-center gap-2 px-10 py-4 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-primary/50 transition-all group" id="see-more-btn" onclick="toggleRecommended()">
+<span id="see-more-text" class="">See More</span> <span class="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover:translate-y-1" id="see-more-icon" style="transform: rotate(0deg);">arrow_downward</span>
+</button>
+</div>
+</section>
+<!-- How It Works Section -->
+<section class="max-w-7xl mx-auto px-4 md:px-gutter mt-32 mb-16">
+<div class="glass-card rounded-[3rem] p-12 md:p-20 relative overflow-hidden liquid-gloss" style="--mouse-x: 988px; --mouse-y: 707.7291259765625px;">
+<div class="absolute -top-24 -right-24 w-96 h-96 bg-primary/10 blur-[100px] rounded-full"></div>
+<div class="absolute -bottom-24 -left-24 w-96 h-96 bg-secondary/10 blur-[100px] rounded-full"></div>
+<div class="relative z-10 space-y-16">
+<div class="text-center space-y-4">
+<h2 class="text-display-lg font-black tracking-tighter">How AUCTI.ON Works</h2>
+<p class="text-on-surface-variant text-body-lg max-w-2xl mx-auto">Discover a new way to trade premium goods with our transparent, secure, and fluid auction system.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Bid -->
+<div class="p-8 rounded-[2.5rem] bg-white/5 border border-white/10 hover:border-primary/30 transition-all duration-500 group">
+<div class="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-[32px]">gavel</span>
+</div>
+<h3 class="text-headline-md font-bold mb-4">Bid</h3>
+<p class="text-on-surface-variant text-body-md">Join live auctions and place real-time bids. Our liquid-glass interface ensures you never miss a beat in the heat of competition.</p>
+</div>
+<!-- Buy -->
+<div class="p-8 rounded-[2.5rem] bg-white/5 border border-white/10 hover:border-primary/30 transition-all duration-500 group">
+<div class="w-16 h-16 rounded-2xl bg-secondary/20 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary text-[32px]">shopping_cart</span>
+</div>
+<h3 class="text-headline-md font-bold mb-4">Buy</h3>
+<p class="text-on-surface-variant text-body-md">Can't wait? Use the "Buy Now" feature on eligible items to secure your purchase instantly at a fair market price.</p>
+</div>
+<!-- Sell -->
+<div class="p-8 rounded-[2.5rem] bg-white/5 border border-white/10 hover:border-primary/30 transition-all duration-500 group">
+<div class="w-16 h-16 rounded-2xl bg-tertiary/20 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-tertiary text-[32px]">sell</span>
+</div>
+<h3 class="text-headline-md font-bold mb-4">Sell</h3>
+<p class="text-on-surface-variant text-body-md">List your own premium items in minutes. Our platform connects you with verified collectors and handles secure transactions.</p>
+</div>
+</div>
+<div class="flex justify-center pt-8">
+<button class="px-12 py-5 rounded-full bg-primary text-on-primary font-black text-headline-md hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-primary/20">Get Started Now</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-surface-container-low/95 rounded-t-[3rem] border-t border-white/5 py-16">
+<div class="max-w-7xl mx-auto px-gutter grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="space-y-6">
+<span class="text-headline-md font-black text-on-surface">AUCTI.ON</span>
+<p class="text-body-md text-on-surface-variant max-w-xs">The premier marketplace for certified pre-owned tech, collectibles, and live liquid-fluid peer-to-peer auctions.</p>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-primary/20 transition-all cursor-pointer border border-white/5"><span class="material-symbols-outlined text-[20px]">public</span></div>
+<div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-primary/20 transition-all cursor-pointer border border-white/5"><span class="material-symbols-outlined text-[20px]">share</span></div>
+<div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-primary/20 transition-all cursor-pointer border border-white/5"><span class="material-symbols-outlined text-[20px]">link</span></div>
+</div>
+</div>
+<div class="space-y-6">
+<h4 class="font-bold text-primary uppercase tracking-widest text-xs">Buy &amp; Bid</h4>
+<ul class="space-y-3 text-on-surface-variant text-sm">
+<li class="hover:text-primary cursor-pointer transition-colors">Live Auctions</li>
+<li class="hover:text-primary cursor-pointer transition-colors">Today's Deals</li>
+<li class="hover:text-primary cursor-pointer transition-colors">Categories</li>
+<li class="hover:text-primary cursor-pointer transition-colors">How Bidding Works</li>
+</ul>
+</div>
+<div class="space-y-6">
+<h4 class="font-bold text-primary uppercase tracking-widest text-xs">Support</h4>
+<ul class="space-y-3 text-on-surface-variant text-sm">
+<li class="hover:text-primary cursor-pointer transition-colors">Help Center / FAQ</li>
+<li class="hover:text-primary cursor-pointer transition-colors">Buyer Protection</li>
+<li class="hover:text-primary cursor-pointer transition-colors">Auction Rules</li>
+<li class="hover:text-primary cursor-pointer transition-colors">Shipping &amp; Returns</li>
+</ul>
+</div>
+<div class="space-y-6">
+<h4 class="font-bold text-primary uppercase tracking-widest text-xs">Auction Alerts</h4>
+<div class="flex bg-white/5 rounded-2xl border border-white/10 overflow-hidden focus-within:border-primary/50 transition-all">
+<input class="bg-transparent border-none focus:ring-0 w-full px-5 py-3 text-sm" placeholder="your email..." type="email">
+<button class="px-6 py-3 bg-primary text-on-primary font-bold hover:bg-white/20 transition-all">Join</button>
+</div>
+<div class="flex flex-col gap-3 text-on-surface-variant text-sm">
+<span class="flex items-center gap-3"><span class="material-symbols-outlined text-[18px]">mail</span> support@aucti.on</span>
+<span class="flex items-center gap-3"><span class="material-symbols-outlined text-[18px]">call</span> +1 (555) 019-2834</span>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-white/5 px-gutter flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-outline">
+<p class="">© 2024 AUCTI.ON Inc. All rights reserved.</p>
+<div class="flex gap-8">
+<a class="hover:text-on-surface transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-on-surface transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-on-surface transition-colors" href="#">Cookies</a>
+</div>
+</div>
+</footer>
+<!-- Overlays & Popups -->
+<div class="fixed inset-0 z-[110] pointer-events-none transition-all duration-500 hidden" id="menu-popup">
+<div class="absolute inset-0 bg-background/80 backdrop-blur-2xl transition-opacity duration-500 opacity-0" id="menu-overlay" onclick="togglePopup('menu-popup')"></div>
+<div class="absolute right-0 top-0 h-full w-full max-w-md glass-card transition-transform duration-500 p-12 flex flex-col pointer-events-auto translate-x-full" id="menu-content" style="--mouse-x: 26.5802001953125px; --mouse-y: 75px;">
+<button class="self-end p-2 rounded-full hover:bg-white/10 transition-all mb-12" onclick="togglePopup('menu-popup')">
+<span class="material-symbols-outlined text-[32px]">close</span>
+</button>
+<nav class="space-y-8">
+<a class="block text-headline-lg font-bold hover:text-primary transition-all hover:translate-x-4" href="doc3.html">Dashboard</a>
+<a class="block text-headline-lg font-bold hover:text-primary transition-all hover:translate-x-4" href="doc4.html">Active Auctions</a>
+<a class="block text-headline-lg font-bold hover:text-primary transition-all hover:translate-x-4" href="doc3.html">Won Items</a>
+<a class="block text-headline-lg font-bold hover:text-primary transition-all hover:translate-x-4 text-error" href="#">Sign Out</a>
+</nav>
+<div class="mt-auto flex items-center gap-4 p-6 rounded-3xl bg-white/5 border border-white/10">
+<img class="w-16 h-16 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQyI1GiJFObU8jIeifOci3VmGx-tLVLjc7cj9kRZscoYyonYtVqnHgKQZ5EtPQ67rWUiK8w2RS3R9bdzEulhhF0UJBeHRducby50CRb82d2iyJhX52rNtj7G69VmysSwiZkitjK17VUPPHIJj6Fw7qIA3W-tKeAVot-3MmumznVRC_A1el7_hI2e4ozpFa7AzxdOyD-7c12eIqz28oUH0HiZeA-uXTBP3RZHPJA-hdCoyPnA0AiMhTHA">
+<div>
+<h3 class="text-headline-md font-bold">Oto Bubu</h3>
+<p class="text-outline">Verified Collector</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fixed inset-0 z-[110] flex items-center justify-center p-6 hidden" id="filter-popup">
+<div class="absolute inset-0 bg-background/60 backdrop-blur-md" onclick="togglePopup('filter-popup')"></div>
+<div class="relative w-full max-w-lg glass-card rounded-[2rem] p-8 space-y-8 shadow-2xl border-white/20 animate-in zoom-in-95 duration-200" style="--mouse-x: 467px; --mouse-y: 38.6666259765625px;">
+<div class="flex justify-between items-center">
+<h3 class="text-headline-md font-bold">Filter Categories</h3>
+<button class="p-1 rounded-full hover:bg-white/10" onclick="togglePopup('filter-popup')"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="p-5 rounded-2xl bg-white/5 border border-white/10 text-left hover:bg-primary/20 hover:border-primary/40 transition-all font-bold">Technology</button>
+<button class="p-5 rounded-2xl bg-white/5 border border-white/10 text-left hover:bg-primary/20 hover:border-primary/40 transition-all font-bold">Real Estate</button>
+<button class="p-5 rounded-2xl bg-white/5 border border-white/10 text-left hover:bg-primary/20 hover:border-primary/40 transition-all font-bold">Vehicles</button>
+<button class="p-5 rounded-2xl bg-white/5 border border-white/10 text-left hover:bg-primary/20 hover:border-primary/40 transition-all font-bold">Art &amp; Decor</button>
+</div>
+<div class="flex gap-4">
+<button class="flex-1 py-4 rounded-xl bg-white/5 font-bold" onclick="togglePopup('filter-popup')">Clear All</button>
+<button class="flex-1 py-4 rounded-xl bg-primary text-on-primary font-bold" onclick="togglePopup('filter-popup')">Apply Filters</button>
+</div>
+</div>
+</div>
+<script>
+    // Carousel Logic
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('#hero-carousel > div');
+    const track = document.getElementById('hero-carousel');
+    const dots = document.querySelectorAll('#carousel-dots > div');
+    
+    function moveCarousel(direction) {
+        currentSlide = (currentSlide + direction + slides.length) % slides.length;
+        updateCarousel();
+    }
+
+    function goToSlide(index) {
+        currentSlide = index;
+        updateCarousel();
+    }
+
+    function updateCarousel() {
+        if(track) track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        dots.forEach((dot, idx) => {
+            if(idx === currentSlide) {
+                dot.classList.add('bg-primary', 'w-8');
+                dot.classList.remove('bg-white/20', 'w-3');
+            } else {
+                dot.classList.remove('bg-primary', 'w-8');
+                dot.classList.add('bg-white/20', 'w-3');
+            }
+        });
+    }
+
+    // Auto-play
+    setInterval(() => moveCarousel(1), 8000);
+
+    // Initial dot state
+    updateCarousel();
+
+    // Toggle Recommended Grid Logic
+    let isExpanded = false;
+    function toggleRecommended() {
+        const grid = document.getElementById('recommended-grid');
+        const btnText = document.getElementById('see-more-text');
+        const btnIcon = document.getElementById('see-more-icon');
+        
+        isExpanded = !isExpanded;
+        
+        if (isExpanded) {
+            grid.style.maxHeight = '2000px'; // Allow to grow
+            btnText.textContent = 'See Less';
+            btnIcon.style.transform = 'rotate(180deg)';
+        } else {
+            grid.style.maxHeight = '800px'; // 2 rows roughly
+            btnText.textContent = 'See More';
+            btnIcon.style.transform = 'rotate(0deg)';
+            // Scroll back up to the recommended header if we retracted
+            grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+
+    // Popup Logic
+    function togglePopup(id) {
+        const popup = document.getElementById(id);
+        const body = document.body;
+        
+        if (id === 'menu-popup') {
+            const overlay = document.getElementById('menu-overlay');
+            const content = document.getElementById('menu-content');
+            if (popup.classList.contains('hidden')) {
+                popup.classList.remove('hidden');
+                setTimeout(() => {
+                    overlay.classList.remove('opacity-0');
+                    content.classList.remove('translate-x-full');
+                }, 10);
+                body.style.overflow = 'hidden';
+            } else {
+                overlay.classList.add('opacity-0');
+                content.classList.add('translate-x-full');
+                setTimeout(() => {
+                    popup.classList.add('hidden');
+                    body.style.overflow = 'auto';
+                }, 500);
+            }
+        } else {
+            if (popup.classList.contains('hidden')) {
+                popup.classList.remove('hidden');
+                body.style.overflow = 'hidden';
+            } else {
+                popup.classList.add('hidden');
+                body.style.overflow = 'auto';
+            }
+        }
+    }
+
+    // Scroll Effects
+    window.addEventListener('scroll', () => {
+        const topNav = document.getElementById('top-nav');
+        if (window.scrollY > 20) {
+            topNav.parentElement.classList.add('pt-2');
+            topNav.classList.add('px-8', 'mx-4', 'bg-secondary-container/95');
+        } else {
+            topNav.parentElement.classList.remove('pt-2');
+            topNav.classList.remove('px-8', 'mx-4', 'bg-secondary-container/95');
+        }
+    });
+
+    // Interaction Init
+    document.querySelectorAll('.glass-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+</script>
+
+<script src="script.js"></script>
+</body></html>
+

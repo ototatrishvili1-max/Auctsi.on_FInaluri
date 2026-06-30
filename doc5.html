@@ -1,0 +1,419 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Sell Your Item | AUCTI.ON</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Shared Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#0f172a",
+                    "surface-container-highest": "#353436",
+                    "inverse-surface": "#e4e2e4",
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-secondary": "#233144",
+                    "on-secondary-fixed": "#0d1c2f",
+                    "surface-container-low": "#1b1b1d",
+                    "on-secondary-container": "#abb9d2",
+                    "tertiary": "#dec29a",
+                    "on-primary": "#283044",
+                    "background": "#131315",
+                    "on-tertiary": "#3e2d11",
+                    "surface-container": "#1f1f21",
+                    "inverse-primary": "#565e74",
+                    "secondary-container": "#3c4a5e",
+                    "outline-variant": "#45464d",
+                    "outline": "#909097",
+                    "on-error": "#690005",
+                    "on-background": "#e4e2e4",
+                    "error": "#ffb4ab",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-error-container": "#ffdad6",
+                    "secondary-fixed": "#d5e3fd",
+                    "surface-container-lowest": "#0e0e10",
+                    "surface-tint": "#bec6e0",
+                    "inverse-on-surface": "#303032",
+                    "secondary": "#b9c7e0",
+                    "primary": "#bec6e0",
+                    "tertiary-container": "#231500",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "on-primary-container": "#798098",
+                    "on-tertiary-container": "#957d5a",
+                    "tertiary-fixed-dim": "#dec29a",
+                    "surface": "#131315",
+                    "secondary-fixed-dim": "#b9c7e0",
+                    "primary-fixed": "#dae2fd",
+                    "on-tertiary-fixed": "#271901",
+                    "surface-container-high": "#2a2a2b",
+                    "on-secondary-fixed-variant": "#3a485c",
+                    "on-primary-fixed": "#131b2e",
+                    "surface-bright": "#39393b",
+                    "error-container": "#93000a",
+                    "surface-variant": "#353436",
+                    "on-surface-variant": "#c6c6cd",
+                    "surface-dim": "#131315",
+                    "on-surface": "#e4e2e4",
+                    "tertiary-fixed": "#fcdeb5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px",
+                    "3xl": "1.5rem"
+            },
+            "spacing": {
+                    "panel-gap": "20px",
+                    "container-padding-desktop": "32px",
+                    "container-padding-mobile": "16px",
+                    "base": "8px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "price-display": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                    "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                    "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                    "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                    "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                    "price-display": ["36px", { "lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                    "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #131315;
+            color: #e4e2e4;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .liquid-glass {
+            background: rgba(60, 74, 94, 0.1);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .glass-input {
+            background: rgba(14, 14, 16, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-input:focus {
+            outline: none;
+            border-color: #bec6e0;
+            box-shadow: 0 0 15px rgba(190, 198, 224, 0.2);
+        }
+
+        .shine-effect {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shine-effect::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.05) 50%, transparent 55%);
+            transform: rotate(0deg);
+            transition: transform 0.5s;
+        }
+
+        .shine-effect:hover::after {
+            transform: translate(10%, 10%);
+        }
+
+        .step-inactive { opacity: 0.5; filter: grayscale(1); }
+        .step-active { opacity: 1; filter: none; }
+    </style>
+</head>
+<body class="bg-background">
+<!-- TopNavBar -->
+<nav class="sticky top-4 z-50 flex items-center justify-between w-[calc(100%-2rem)] max-w-7xl mx-auto bg-secondary-container/80 backdrop-blur-xl dark:bg-secondary-container/80 rounded-full px-6 py-2 border border-white/10 shadow-2xl">
+<div class="flex items-center gap-8">
+<a href="doc.html" class="text-headline-md font-headline-md font-black tracking-tighter text-on-secondary-container dark:text-on-secondary-container hover:opacity-80 transition-opacity">AUCTI.ON</a>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="doc.html">Auctions</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="doc4.html">Live</a>
+<a class="text-primary font-bold border-b-2 border-primary text-label-md font-label-md" href="#">Sell</a>
+<button id="burger-btn" class="material-symbols-outlined text-on-surface-variant hover:bg-white/5 p-2 rounded-full transition-all border-none bg-transparent cursor-pointer">menu</button>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative flex-1 mx-4"><span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><span class="material-symbols-outlined text-on-surface-variant text-sm">search</span></span><input type="text" placeholder="search keyword here..." class="block w-full pl-10 pr-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm placeholder-on-surface-variant focus:outline-none focus:ring-1 focus:ring-primary/50 transition-all"></div>
+<button class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm font-medium hover:bg-white/10 transition-all"><span class="material-symbols-outlined text-sm">filter_list</span>Filter</button>
+<button class="bg-primary text-on-primary text-label-md font-label-md px-4 py-2 rounded-full scale-95 active:scale-90 transition-transform">Add New +</button>
+<a href="doc3.html" class="w-8 h-8 rounded-full overflow-hidden border border-white/20 block">
+<img class="w-full h-full object-cover" data-alt="A sophisticated headshot of a verified male collector with clean, modern features, set against a blurred high-end studio background that echoes the liquid glass and deep navy aesthetic of the AUCTI.ON platform. He is wearing a minimalist charcoal suit, reflecting professionalism and trust in the luxury auction market." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATwPGdcaTOyCLRJXEpmq0jXe9h_4QChe50pR0NDWJr1EZkievr-AUURi6e0uOb5kZ80sn5yXWvs24CnrKRrQxLivRdFQ20VIeFsXCBgmZyomRKeQM9RrLQO749F6QaceKsuuu9wGuoVscxrerOsip4-zkjuWyp38KhBHw1a2nyWR_DmzZz-W1qsCdV-XuvuIAAuUxskdzyFfnPbfeLSo8YLL0ras-Zsh-GakUzDuA1k7sQ0B8lbTJJLg">
+</a>
+</div>
+</nav>
+<div id="menu-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+<div id="menu-drawer" class="fixed top-0 right-0 h-full w-72 bg-surface-container z-50 translate-x-full transition-transform duration-300 p-8 flex flex-col gap-8 border-l border-white/10">
+  <button onclick="closeDrawer()" class="self-end p-2 rounded-full hover:bg-white/10 transition-all border-none bg-transparent text-on-surface cursor-pointer"><span class="material-symbols-outlined">close</span></button>
+  <nav class="flex flex-col gap-6 mt-4">
+    <a href="doc.html" class="text-headline-md font-bold hover:text-primary transition-all hover:translate-x-2 block">Auctions</a>
+    <a href="doc4.html" class="text-headline-md font-bold hover:text-primary transition-all hover:translate-x-2 block">Live</a>
+    <a href="doc5.html" class="text-headline-md font-bold hover:text-primary transition-all hover:translate-x-2 block">Sell</a>
+    <a href="doc3.html" class="text-headline-md font-bold hover:text-primary transition-all hover:translate-x-2 block">Profile</a>
+  </nav>
+</div>
+<main class="max-w-7xl mx-auto px-gutter py-12 min-h-screen">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Panel: Steps & Summary -->
+<aside class="lg:col-span-3 space-y-6">
+<div class="liquid-glass rounded-3xl p-6">
+<h2 class="text-headline-md font-headline-md mb-6">List Item</h2>
+<div class="space-y-4">
+<div class="flex items-center gap-4 step-active">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center border border-primary">
+<span class="text-primary font-bold">1</span>
+</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface">Details</p>
+<p class="text-[12px] text-on-surface-variant">Title &amp; Description</p>
+</div>
+</div>
+<div class="flex items-center gap-4 step-inactive">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center border border-white/5">
+<span class="text-on-surface-variant font-bold">2</span>
+</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface">Media</p>
+<p class="text-[12px] text-on-surface-variant">Images &amp; Videos</p>
+</div>
+</div>
+<div class="flex items-center gap-4 step-inactive">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center border border-white/5">
+<span class="text-on-surface-variant font-bold">3</span>
+</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface">Pricing</p>
+<p class="text-[12px] text-on-surface-variant">Auction Parameters</p>
+</div>
+</div>
+</div>
+</div>
+<div class="liquid-glass rounded-3xl p-6 hidden lg:block">
+<p class="text-label-md font-label-md text-on-surface-variant mb-2">PRO TIP</p>
+<p class="text-body-md font-body-md text-on-surface">High-quality photos increase final bid values by up to 45%. Use natural lighting!</p>
+</div>
+</aside>
+<!-- Center Panel: The Form -->
+<div class="lg:col-span-9 space-y-8">
+<!-- Section 1: Core Info -->
+<section class="liquid-glass rounded-3xl p-8 shine-effect">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary">edit_note</span>
+<h3 class="text-headline-md font-headline-md">Item Information</h3>
+</div>
+<div class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface-variant">Item Title
+<input class="w-full glass-input rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/50 focus:ring-primary/20" placeholder="e.g. Rare 1969 Vintage Chronograph" type="text">
+</label></div>
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface-variant">Category
+<select class="w-full glass-input rounded-xl px-4 py-3 text-on-surface focus:ring-primary/20 appearance-none">
+<option>Select a category</option>
+<option>Luxury Watches</option>
+<option>Modern Art</option>
+<option>Classic Cars</option>
+<option>Collectibles</option>
+</select>
+</label></div>
+</div>
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface-variant">Description
+<textarea class="w-full glass-input rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/50 focus:ring-primary/20" placeholder="Describe your item in detail, including condition, history, and any flaws..." rows="4"></textarea>
+</label></div>
+</div>
+</section>
+<!-- Section 2: Media Upload -->
+<section class="liquid-glass rounded-3xl p-8 shine-effect">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary">add_a_photo</span>
+<h3 class="text-headline-md font-headline-md">Media Gallery</h3>
+</div>
+<div class="border-2 border-dashed border-white/10 rounded-3xl p-12 text-center hover:bg-white/5 transition-all cursor-pointer group">
+<div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl">upload_file</span>
+</div>
+<p class="text-headline-md font-headline-md text-on-surface mb-2">Drag &amp; Drop Images</p>
+<p class="text-body-md font-body-md text-on-surface-variant">Supported formats: JPG, PNG, WEBP (Max 10MB per file)</p>
+<button class="mt-6 px-8 py-2.5 rounded-full border border-primary text-primary text-label-md font-label-md hover:bg-primary/10 transition-colors">Select Files</button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+<div class="aspect-square rounded-2xl glass-input flex items-center justify-center text-on-surface-variant border-dashed">
+<span class="material-symbols-outlined">image</span>
+</div>
+<div class="aspect-square rounded-2xl glass-input flex items-center justify-center text-on-surface-variant border-dashed">
+<span class="material-symbols-outlined">image</span>
+</div>
+<div class="aspect-square rounded-2xl glass-input flex items-center justify-center text-on-surface-variant border-dashed">
+<span class="material-symbols-outlined">image</span>
+</div>
+<div class="aspect-square rounded-2xl glass-input flex items-center justify-center text-on-surface-variant border-dashed">
+<span class="material-symbols-outlined">add</span>
+</div>
+</div>
+</section>
+<!-- Section 3: Pricing & Duration -->
+<section class="liquid-glass rounded-3xl p-8 shine-effect">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary">payments</span>
+<h3 class="text-headline-md font-headline-md">Pricing &amp; Schedule</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface-variant">Starting Price ($)
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">$</span>
+<input class="w-full glass-input rounded-xl pl-8 pr-4 py-3 text-on-surface focus:ring-primary/20" placeholder="0.00" type="number">
+</div>
+</label></div>
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface-variant">Buy It Now Price (Optional)
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">$</span>
+<input class="w-full glass-input rounded-xl pl-8 pr-4 py-3 text-on-surface focus:ring-primary/20" placeholder="0.00" type="number">
+</div>
+</label></div>
+</div>
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface-variant">Auction Duration
+<select class="w-full glass-input rounded-xl px-4 py-3 text-on-surface focus:ring-primary/20 appearance-none">
+<option>3 Days</option>
+<option>5 Days</option>
+<option selected="">7 Days</option>
+<option>10 Days</option>
+<option>14 Days</option>
+</select>
+</label></div>
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface-variant">Reserve Price
+<div class="flex items-center gap-3 glass-input rounded-xl px-4 py-3">
+<input class="w-5 h-5 rounded border-white/20 bg-transparent text-primary focus:ring-primary/20" type="checkbox">
+<span class="text-body-md font-body-md text-on-surface">Enable Reserve Price</span>
+</div>
+</label></div>
+</div>
+</div>
+</section>
+<div class="flex items-center justify-between gap-4">
+<button class="px-8 py-3 rounded-full text-on-surface-variant hover:text-on-surface font-label-md transition-colors">Save Draft</button>
+<div class="flex gap-4">
+<button class="px-8 py-3 rounded-full bg-secondary-container text-on-secondary-container font-label-md transition-all hover:brightness-110">Preview Listing</button>
+<button class="px-10 py-3 rounded-full bg-primary text-on-primary font-bold shadow-lg shadow-primary/20 transition-all hover:scale-105 active:scale-95">Publish Auction</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full px-gutter py-12 flex flex-col items-center bg-surface-container-low/95 dark:bg-surface-container-low/95 rounded-t-3xl mt-12 border-t border-white/5">
+<div class="max-w-7xl w-full grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+<div class="space-y-6">
+<span class="text-headline-md font-headline-md font-black text-on-surface">AUCTI.ON</span>
+<p class="text-body-md font-body-md text-on-surface-variant leading-relaxed">
+                    The premier marketplace for certified pre-owned tech, collectibles, and live liquid-fluid peer-to-peer auctions. 
+                </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full liquid-glass flex items-center justify-center hover:scale-110 transition-transform" href="#">
+<img alt="Facebook" class="w-5 h-5 opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbfgjn9H5QJdAJJtqwaYWkdVJD5VwktrXGbXPR9dCfDWUfC22SJyqTEITJB-B6bin_00VMdvqK96XF6mNNrkbcpxU99ppRX8ODUFrCtNrLuj0jfq1vVqUhX1T0QRiZ4oSVct65OWPiMhqq8cdTdFnUYZRkRnRJP1a_tn5H-4mZHgXWmTPzAVfI3UwIWtF9FmTnMQpvXwoQxVqBwFQYOEXc6dlZ-FU7u3aBFLh8PB0pgeysS2uiYBKlmg">
+</a>
+<a class="w-10 h-10 rounded-full liquid-glass flex items-center justify-center hover:scale-110 transition-transform" href="#">
+<img alt="Instagram" class="w-5 h-5 opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgV1hy5zhOTyVkX7Ah84rRNwQgyd5nZA8bDtyw5eOUPtUr5gasMZNst1mIUIl0OptOSLWHBxy2KHqGXigBzp6OUc-tb7KoQL2TdIc7YLKZoPAfAe-KZyv5J_zVeSxUqxB38HwmCm91yUWxqUGff76I2ZD8DPyIRj7RoaIZMdzPciFsAySCWxDrApbcRyN5ZIbBJm7tT6AdcTSbWde38VwN1Xd9-yohmezE89ImTnPC28p619x57FeZIg">
+</a>
+<a class="w-10 h-10 rounded-full liquid-glass flex items-center justify-center hover:scale-110 transition-transform" href="#">
+<img alt="X" class="w-5 h-5 opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB61jSQnhH0s8crUPkbsHl5p8MtDBhcKRWfwft1I9RyeFT0TSq_SqJVHuyJ8onZJV9Uwbes0ErLfRraVENoaJSpx-mZLQo9iGVl5SWJWXinn9FAMgFHvGMAYztYUWMZGiprqGDoSxM0l7kneimwktRTpCHTjWqF23loRNCJz0mUMUwjZEMHAqqjl21LS2TnYJC7b5Yjsp9zIYPnIzI_R4Un_4wzIu_ihC7jHNrzO7QPxkavk_BvmSpV7Q">
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-label-md font-bold text-on-surface uppercase tracking-wider mb-6">Buy &amp; Bid</h4>
+<ul class="space-y-3">
+<li class=""><a class="text-on-surface-variant hover:text-on-surface transition-colors text-body-md" href="#">Live Auctions</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-on-surface transition-colors text-body-md" href="#">Today's Deals</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-on-surface transition-colors text-body-md" href="#">Categories</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-on-surface transition-colors text-body-md" href="#">How Bidding Works</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-label-md font-bold text-on-surface uppercase tracking-wider mb-6">Support</h4>
+<ul class="space-y-3">
+<li class=""><a class="text-on-surface-variant hover:text-on-surface transition-colors text-body-md" href="#">Help Center / FAQ</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-on-surface transition-colors text-body-md" href="#">Buyer Protection</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-on-surface transition-colors text-body-md" href="#">Auction Rules</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-on-surface transition-colors text-body-md" href="#">Shipping &amp; Returns</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-label-md font-bold text-on-surface uppercase tracking-wider mb-6">Auction Alerts</h4>
+<div class="relative flex items-center glass-input rounded-full px-4 py-2">
+<input class="bg-transparent border-none text-body-md w-full focus:ring-0 text-on-surface placeholder:text-on-surface-variant" placeholder="your email..." type="email">
+<button class="bg-primary text-on-primary px-4 py-1.5 rounded-full text-label-md font-bold">Join</button>
+</div>
+<div class="mt-6 space-y-2">
+<div class="flex items-center gap-2 text-on-surface-variant text-body-md">
+<span class="material-symbols-outlined text-sm">mail</span>
+<span class="">support@aucti.on</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant text-body-md">
+<span class="material-symbols-outlined text-sm">call</span>
+<span class="">+1 (555) 019-2834</span>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-label-md font-label-md text-on-surface-variant">© 2024 AUCTI.ON Inc. All rights reserved.</p>
+<div class="flex gap-8">
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Privacy Policy</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Terms of Service</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Cookies</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple visual feedback for form focus
+        const inputs = document.querySelectorAll('.glass-input input, .glass-input textarea, .glass-input select');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.closest('.glass-input').style.borderColor = 'rgba(190, 198, 224, 0.4)';
+            });
+            input.addEventListener('blur', () => {
+                input.closest('.glass-input').style.borderColor = 'rgba(255, 255, 255, 0.1)';
+            });
+        });
+    </script>
+
+<script src="script.js"></script>
+</body></html>

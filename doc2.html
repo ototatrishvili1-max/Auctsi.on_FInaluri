@@ -1,0 +1,437 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>AUCTI.ON | ASUS ROG Strix G15</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #131315;
+            color: #e4e2e4;
+            overflow-x: hidden;
+        }
+
+        .glass-panel {
+            background: rgba(53, 52, 54, 0.8);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .liquid-gloss {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .liquid-gloss::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.05) 50%, transparent 55%);
+            animation: shine 6s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shine {
+            0% { transform: translate(-30%, -30%); }
+            100% { transform: translate(30%, 30%); }
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary": "#233144",
+                        "inverse-primary": "#565e74",
+                        "tertiary-container": "#231500",
+                        "tertiary": "#dec29a",
+                        "surface-dim": "#131315",
+                        "on-surface-variant": "#c6c6cd",
+                        "surface-container-highest": "#353436",
+                        "surface-variant": "#353436",
+                        "secondary": "#b9c7e0",
+                        "background": "#131315",
+                        "primary-container": "#0f172a",
+                        "on-surface": "#e4e2e4",
+                        "on-secondary-container": "#abb9d2",
+                        "surface-container-low": "#1b1b1d",
+                        "surface-container": "#1f1f21",
+                        "primary": "#bec6e0",
+                        "surface-container-high": "#2a2a2b",
+                        "outline": "#909097",
+                        "bid-blue": "#3b82f6",
+                        "buy-green": "#84cc16"
+                    },
+                    spacing: {
+                        "gutter": "24px",
+                        "base": "8px"
+                    },
+                    fontFamily: {
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Top Navigation Bar -->
+<nav class="sticky top-0 z-50 w-full px-gutter py-4">
+  <div class="max-w-7xl mx-auto glass-panel liquid-gloss px-6 py-3 flex items-center justify-between shadow-2xl rounded-full"><div class="flex items-center gap-8"><a href="doc.html" class="text-headline-md font-black tracking-tighter text-on-surface hover:opacity-80 transition-opacity">AUCTI.ON</a>
+<div class="hidden md:flex items-center gap-6"><a class="text-primary font-bold border-b-2 border-primary text-label-md" href="doc.html">Auctions</a><a class="text-on-surface-variant hover:text-primary transition-colors text-label-md" href="doc4.html">Live</a><a class="text-on-surface-variant hover:text-primary transition-colors text-label-md" href="doc5.html">Sell</a></div></div><div class="flex items-center gap-4 flex-1 max-w-md mx-8"><div class="relative w-full flex items-center bg-surface-container-low border border-white/10 rounded-full px-4 py-1.5"><span class="material-symbols-outlined text-on-surface-variant mr-2">search</span><input class="w-full bg-transparent border-none p-0 text-body-md focus:outline-none focus:ring-0" placeholder="search keyword here..." type="text"></div></div><div class="flex items-center gap-3"><button class="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-on-surface px-4 py-1.5 rounded-full text-label-md transition-all active:scale-95 border border-white/10">
+  <span class="material-symbols-outlined text-sm">filter_list</span>
+  <span class="text-sm font-medium">Filter</span>
+</button><button class="hidden lg:flex items-center gap-2 bg-primary/10 hover:bg-primary/20 text-primary px-4 py-1.5 rounded-full text-label-md transition-all active:scale-95">Add New</button><button class="p-2 hover:bg-white/10 rounded-full transition-all active:scale-95 flex items-center justify-center"><span class="material-symbols-outlined text-on-surface-variant">menu</span></button><div class="w-8 h-8 rounded-full overflow-hidden border border-white/20 cursor-pointer hover:scale-105 transition-transform"><img class="w-full h-full object-cover" data-alt="User profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4izSBZWwS7qgjTqt32kY4FncSwEy3IdA8oG_wuHAuJdVG-WoE0cnSK8YocHvQBYWIZ1e-NFEP2Kp3oHTm3jiZiikqmpKe0fZZiPzio1mN1Ftg4-MWaVtyYU8WV1BSQoCdOqPApW3pgqw2KybYU7aqhbSXrLn-yJRlHIBIMgNfazfFZhOBuTUedt9v5OV5kFO4cfXLzZe-IPw_oS1uGWPcP31JJirh-6pNrFmKjE54hodVxNgJqQgw0w"></div></div></div>
+</nav>
+<main class="max-w-7xl mx-auto px-4 md:px-8 mt-8">
+<!-- Hero Section -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8">
+<!-- Product Slider -->
+<div class="lg:col-span-8 glass-panel p-6 flex flex-col items-center justify-center min-h-[450px] liquid-gloss rounded-3xl">
+<div class="relative w-full flex items-center justify-between group">
+<button class="p-2 bg-white/5 hover:bg-white/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<div class="w-full max-w-xl aspect-video relative flex items-center justify-center">
+<img class="max-h-full object-contain" data-alt="A high-resolution product photograph of an ASUS ROG Strix G15 gaming laptop, featuring a glowing RGB backlit keyboard and a sharp 15.6-inch display showing high-energy digital artwork. The device is placed on a reflective dark surface with professional studio lighting highlighting its sleek, dark grey chassis and aggressive gaming design lines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg5OTJWDBfHGuAXCOi2mrfv9buCakQrzNOg4PV66hoxHkSynA9uPROovXp59k_GCDYPPrJdhBes5xQi44rJbKB2199apKITWSd3Oq_0ggEG3hsbAUy8LXcy1ewmtCOjkMMxTR0jbgC0La1RgKGGnNDcr5Fx6Wkf_lVEZFNGwv88fWABRvE-zfN6FXbxqkbJHc0R856nWzLFtqAAbsxnX3DfvniD2wnh8o_yv3J7NBDzyLJUKka1E2RWA">
+</div>
+<button class="p-2 bg-white/5 hover:bg-white/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<div class="flex gap-2 mt-6">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-white/20"></div>
+<div class="w-2 h-2 rounded-full bg-white/20"></div>
+<div class="w-2 h-2 rounded-full bg-white/20"></div>
+<div class="w-2 h-2 rounded-full bg-white/20"></div>
+</div>
+</div>
+<!-- Bidding Panel -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Product Title & Main CTA -->
+<div class="glass-panel p-6 flex flex-col gap-4 rounded-3xl">
+<div>
+<h1 class="text-headline-md font-bold leading-tight">ASUS ROG Strix G15<br>Nvidia RTX 3070</h1>
+</div>
+<button class="w-full bg-bid-blue text-white py-3 rounded-xl font-bold text-headline-md shadow-lg shadow-bid-blue/20 hover:brightness-110 active:scale-95 transition-all">
+                        Place Bid
+                    </button>
+<button class="w-full bg-buy-green text-on-secondary py-3 rounded-xl font-bold text-headline-md shadow-lg shadow-buy-green/20 hover:brightness-110 active:scale-95 transition-all">
+                        buy it now
+                    </button>
+<div class="text-center text-display-lg font-bold text-on-surface tracking-tighter">
+                        1200$
+                    </div>
+</div>
+<!-- Bid Status -->
+<div class="glass-panel p-6 flex flex-col justify-between flex-1 rounded-3xl">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-label-md text-on-surface-variant uppercase tracking-wider mb-1">current bid</p>
+<span class="text-display-lg font-bold">100 $</span>
+</div>
+<div class="w-24 h-4 bg-white/5 rounded overflow-hidden">
+<div class="w-3/4 h-full bg-primary/40"></div>
+</div>
+</div>
+<div class="mt-8">
+<p class="text-label-md text-on-surface-variant mb-3">rise bid</p>
+<div class="flex items-center gap-2 bg-surface-container-low rounded-xl p-2 border border-white/10">
+<span class="px-4 font-bold text-headline-md">10$</span>
+<div class="flex flex-col gap-1 ml-auto">
+<button class="p-1 hover:bg-white/10 rounded"><span class="material-symbols-outlined text-buy-green">add</span></button>
+<button class="p-1 hover:bg-white/10 rounded"><span class="material-symbols-outlined text-error">remove</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Horizontal Scroller (Related) -->
+<section class="mb-12">
+<div class="inline-flex items-center px-6 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8 ml-2">
+  <h2 class="text-headline-md font-bold">Today's auctions</h2>
+</div>
+<div class="flex gap-4 overflow-x-auto no-scrollbar pb-4 -mx-2 px-2">
+<!-- Repeat cards -->
+<div class="min-w-[180px] glass-panel p-2 hover:scale-105">
+<div class="aspect-square rounded-lg overflow-hidden mb-3">
+<img class="w-full h-full object-cover" data-alt="A collection of vintage and modern smartphones scattered on a dark wooden table, soft warm lighting, professional photography style with a shallow depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAeiICCmZmI4FLeK2GRPwGvgSwnS5vsTQXRChovmPuYwyyRSkHaYNoODgCMQjWbKF5kpws3e2mQ5hzyeaFHZRHm5ATtWBuIKMYJ8V5fKSunqsw7GGa0cNDjbwyY5-aRhZh4cy8vOPP2xEMxEqy1GjwIM3bpxQ81EGfX-mh64UcWwahfFFkzn91jE541zJ_rmht3-cSYTqMT8acrzJqs-4MYXUVsUVajKuWx8ir3eIwZKhkwC4m8RJf3A">
+</div>
+<div class="h-2 w-3/4 bg-white/10 rounded mb-2"></div>
+<div class="h-2 w-1/2 bg-white/10 rounded"></div>
+</div>
+<div class="min-w-[180px] glass-panel p-2 hover:scale-105">
+<div class="aspect-square rounded-lg overflow-hidden mb-3">
+<img class="w-full h-full object-cover" data-alt="A majestic thoroughbred horse standing in a sunlit paddock, high contrast natural lighting, professional equine photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBm_TtZBOoBK6HnGhl6LjJYv95ftQ6AZ5yIQXPFV1cTOR9C2QIamLMbpTrQtTqhKLnzIHc6CP09AdphZVOFT9XSNB3iBhPHOLuCpm6MT9_NTnB4kekbjUpKRUkZcGLqrI126sq4Fobnu9Z4qlJ4o0H-YIGzdQ44feMUPTHJ0ms99Mxy2ivbNun3b3tm8TFIqqv2tqIhMoZMXxYhmFZSvDl0w29WAUCoRqiVzI0u40r5lzPBFaMmD8BL3A">
+</div>
+<div class="h-2 w-3/4 bg-white/10 rounded mb-2"></div>
+<div class="h-2 w-1/2 bg-white/10 rounded"></div>
+</div>
+<div class="min-w-[180px] glass-panel p-2 hover:scale-105">
+<div class="aspect-square rounded-lg overflow-hidden mb-3">
+<img class="w-full h-full object-cover" data-alt="A sleek black minimalist professional backpack against a clean grey studio background, crisp commercial product lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZlY45_BDbOXJkRcrH_1h4UvOwnR4m9fvXKVauKEIzsbymi3Eg_zNT-JJEfpO9xLJYTdBdFS5sWvsdRKQPSqx4TqEnGx2LvzAX0gDY4GtBQqWSEgV_ZtBCtWoOrkNn-4Z9xiG9enAkvfn5a2LB3xgKlRfwSBS3VsIkgkHnF1meZxqMW6YZMUV-9dWiVtrjziM625opriWwpOZJMamooPqR0q6T7uJvPMeJqqVfIBsAXRL8DvBYJMwa_A">
+</div>
+<div class="h-2 w-3/4 bg-white/10 rounded mb-2"></div>
+<div class="h-2 w-1/2 bg-white/10 rounded"></div>
+</div>
+<div class="min-w-[180px] glass-panel p-2 hover:scale-105">
+<div class="aspect-square rounded-lg overflow-hidden mb-3">
+<img class="w-full h-full object-cover" data-alt="An ornate golden bird sculpture sitting on a minimalist desk next to an Edison bulb lamp, warm moody atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdo7Q8XZsEGSEObKW3hMwPxeCYLSAf0LpQPT98K9ueJP4Y1ype64qIYk2tkVXvyrjV1WcEVCpfSS6c5o_-1zSuWVAXavRE12semJ-27Le8MmU5IRQPYEeTuNpEh4rz6eRW2bKCtekgOeO3usc5Vzgtd9zIpIVmf_0mDy3mYwyp1OAj7-AfpIAyCNq5QUpREShL0oKog2SiVPex3A1EMvRQdfLOGZBC_jKUyJdZVFbThdPZMJSDxpwOHw">
+</div>
+<div class="h-2 w-3/4 bg-white/10 rounded mb-2"></div>
+<div class="h-2 w-1/2 bg-white/10 rounded"></div>
+</div>
+<div class="min-w-[180px] glass-panel p-2 hover:scale-105">
+<div class="aspect-square rounded-lg overflow-hidden mb-3">
+<img class="w-full h-full object-cover" data-alt="A luxury modern villa with a crystal clear infinity pool during the golden hour, architectural photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWgVUh37RjfZGaGFydqOaiekwQTPX2y02gYv_62WCNvqcmUjPYf7-PyioFPl6hh16Uf102g6xMX1MjQZxQQaU7zqTxsefaiuVZjvF1SIto1w4vs-FVaABJO-n32igcPW9ZxVFVxhxz5HWuINTO3_R92kYZ9iPBa7DndTqugcyQ6vfjzcd8B_duTJDKgcYOBYd5DXUOgyBSuyut9yoO0eQyfWua906RGyLHJFqMLD6-u9C8e0wRAyPIHg">
+</div>
+<div class="h-2 w-3/4 bg-white/10 rounded mb-2"></div>
+<div class="h-2 w-1/2 bg-white/10 rounded"></div>
+</div>
+<div class="min-w-[180px] glass-panel p-2 hover:scale-105">
+<div class="aspect-square rounded-lg overflow-hidden mb-3">
+<img class="w-full h-full object-cover" data-alt="Another view of the ASUS ROG laptop showing its thin profile and side ports, glowing against a dark blue background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzxcX52q1AmxtwJBlGItGeGE5UNzdPRMQi9vsObA2hhFz4CJJXrC3n5U9BL-eVoAU4bGuFtDCm8BnkH5B5QacK7gyIxeQdpkzdJ3e5a3t82NeBk6PFe_EhHt6aGmq9gmVagNS__KuxV7_l5uR5Fee8yWUaehSSdSVfpTdD267Hr7Tn6vNq8oBisSc-QDqUDsn6a3z8wCM1O2PatATMj8mHqqp0x00_rwhCUeFFX-_pDdvAxSLFYfJEvA">
+</div>
+<div class="h-2 w-3/4 bg-white/10 rounded mb-2"></div>
+<div class="h-2 w-1/2 bg-white/10 rounded"></div>
+</div>
+</div>
+</section>
+<!-- Product Specs Bento Grid -->
+<section class="mb-16">
+<div class="inline-flex items-center px-6 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8 ml-2">
+  <h2 class="text-headline-md font-bold">Description</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Display -->
+<div class="lg:row-span-2 glass-panel p-6">
+<h3 class="text-headline-md font-bold mb-4 text-primary">Display</h3>
+<ul class="text-label-md space-y-2 opacity-80 leading-relaxed">
+<li class="">15.6-inch</li>
+<li class="">WQHD (2560 x 1440) 16:9</li>
+<li class="">IPS-level</li>
+<li class="">Anti-glare(AG) display</li>
+<li class="">DCI-P3:100%</li>
+<li class="">Refresh Rate:240Hz</li>
+<li class="">Response Time:3ms</li>
+<li class="">Adaptive-Sync</li>
+<li class="">Pantone Validated</li>
+<li class="">MUX Switch + Optimus</li>
+</ul>
+</div>
+<!-- Processor -->
+<div class="glass-panel p-6">
+<h3 class="text-headline-md font-bold mb-4 text-primary">Processor</h3>
+<p class="text-label-md opacity-80 leading-relaxed">
+                        AMD Ryzen™ 9 6900HS Mobile Processor (8-core/16-thread, 16MB cache, up to 4.9 GHz max boost)
+                    </p>
+</div>
+<!-- Graphics -->
+<div class="glass-panel p-6 lg:col-span-2">
+<h3 class="text-headline-md font-bold mb-4 text-primary">Graphics</h3>
+<p class="text-label-md opacity-80 leading-relaxed">
+                        NVIDIA® GeForce RTX™ 3070 Ti Laptop GPU ROG Boost: 1085MHz* at 120W (1035MHz Boost Clock+50MHz OC, 100W+20W Dynamic Boost) 8GB GDDR6
+                    </p>
+</div>
+<!-- OS & Storage -->
+<div class="glass-panel p-6">
+<h3 class="text-headline-md font-bold mb-4 text-primary">OS</h3>
+<p class="text-label-md opacity-80">Windows 11 Home</p>
+</div>
+<div class="glass-panel p-6">
+<h3 class="text-headline-md font-bold mb-4 text-primary">Storage</h3>
+<p class="text-label-md opacity-80">1TB PCIe® 4.0 NVMe™ M.2 SSD</p>
+</div>
+<!-- I/O Ports -->
+<div class="lg:col-span-1 lg:row-span-2 glass-panel p-6">
+<h3 class="text-headline-md font-bold mb-4 text-primary">I/O Ports</h3>
+<ul class="text-label-md space-y-2 opacity-80 leading-relaxed">
+<li class="">1x 3.5mm Combo Audio Jack</li>
+<li class="">1x HDMI 2.0b</li>
+<li class="">2x USB 3.2 Gen 2 Type-C with support for DisplayPort™ / power delivery (data speed up to 10Gbps)</li>
+<li class="">2x USB 3.2 Gen 2 Type-A (data speed up to 10Gbps)</li>
+<li class="">1x RJ45 LAN port</li>
+<li class="">1x card reader (microSD) (UHS-II)</li>
+</ul>
+</div>
+<!-- Memory -->
+<div class="glass-panel p-6 lg:col-span-2">
+<h3 class="text-headline-md font-bold mb-4 text-primary">Memory</h3>
+<ul class="text-label-md space-y-1 opacity-80">
+<li class="">16GB DDR5 on board</li>
+<li class="">16GB DDR5-4800 SO-DIMM</li>
+<li class="">Max Capacity: 48GB</li>
+<li class="">Support dual channel memory technology</li>
+</ul>
+</div>
+<!-- Keyboard & Touchpad -->
+<div class="glass-panel p-6">
+<h3 class="text-headline-md font-bold mb-4 text-primary">Keyboard and Touchpad</h3>
+<p class="text-label-md opacity-80">Backlit Chiclet Keyboard 1-Zone RGB Touchpad</p>
+</div>
+<!-- Expansion Slots -->
+<div class="glass-panel p-6">
+<h3 class="text-headline-md font-bold mb-4 text-primary">Expansion Slots</h3>
+<ul class="text-label-md opacity-80">
+<li class="">1x DDR5 SO-DIMM slot</li>
+<li class="">2x M.2 PCIe</li>
+</ul>
+</div>
+<!-- Audio -->
+<div class="lg:row-span-2 glass-panel p-6">
+<h3 class="text-headline-md font-bold mb-4 text-primary">Audio</h3>
+<ul class="text-label-md space-y-2 opacity-80 leading-relaxed">
+<li class="">Smart Amp Technology</li>
+<li class="">Hi-Res certification (for headphone)</li>
+<li class="">Dolby Atmos</li>
+<li class="">AI noise-canceling technology</li>
+<li class="">Built-in array microphone</li>
+<li class="">2x 2W Tweeter</li>
+<li class="">2x 2W dual-force woofer with Smart Amp Technology</li>
+</ul>
+</div>
+<!-- Camera -->
+<div class="glass-panel p-6">
+<h3 class="text-headline-md font-bold mb-4 text-primary">Camera</h3>
+<p class="text-label-md opacity-80">720P HD IR Camera for Windows Hello</p>
+</div>
+<!-- Dimensions & Weight -->
+<div class="glass-panel p-6">
+<h3 class="text-headline-md font-bold mb-4 text-primary">Dimensions (W x D x H)</h3>
+<p class="text-label-md opacity-80">35.5 x 24.3 x 1.99 ~ 1.99 cm (13.98" x 9.57" x 0.78" ~ 0.78")</p>
+</div>
+<!-- Power Supply -->
+<div class="glass-panel p-6 lg:col-span-1">
+<h3 class="text-headline-md font-bold mb-4 text-primary">Power Supply</h3>
+<p class="text-label-md opacity-80 leading-relaxed">
+                        ø6.0, 240W AC Adapter, Output: 20VDC, 12A, 240W, Input: 100~240C AC 50/60Hz universal
+                    </p>
+</div>
+<!-- Battery -->
+<div class="glass-panel p-6">
+<h3 class="text-headline-md font-bold mb-4 text-primary">Battery</h3>
+<p class="text-label-md opacity-80">90WHrs, 4S1P, 4-cell Li-ion</p>
+</div>
+<!-- Weight -->
+<div class="glass-panel p-6">
+<h3 class="text-headline-md font-bold mb-4 text-primary">Weight</h3>
+<p class="text-label-md opacity-80">1.90 Kg (4.19 lbs)</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full px-gutter py-12 flex flex-col items-center bg-surface-container-low/95 rounded-t-3xl border-t border-white/5">
+<div class="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+<div class="flex flex-col gap-6">
+<span class="text-headline-md font-black text-on-surface">AUCTI.ON</span>
+<p class="text-body-md opacity-60 leading-relaxed">The premier marketplace for certified pre-owned tech, collectibles, and live liquid-fluid peer-to-peer auctions.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full glass-panel flex items-center justify-center hover:scale-110 transition-transform" href="#">
+
+</a>
+<a class="w-10 h-10 rounded-full glass-panel flex items-center justify-center hover:scale-110 transition-transform" href="#">
+
+</a>
+<a class="w-10 h-10 rounded-full glass-panel flex items-center justify-center hover:scale-110 transition-transform" href="#">
+
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-label-md font-bold mb-6 text-primary uppercase">Buy &amp; Bid</h4>
+<ul class="flex flex-col gap-3 text-body-md text-on-surface-variant">
+<li class=""><a class="hover:text-on-surface transition-colors" href="#">Live Auctions</a></li>
+<li class=""><a class="hover:text-on-surface transition-colors" href="#">Today's Deals</a></li>
+<li class=""><a class="hover:text-on-surface transition-colors" href="#">Categories</a></li>
+<li class=""><a class="hover:text-on-surface transition-colors" href="#">How Bidding Works</a></li>
+<li class=""><a class="hover:text-on-surface transition-colors" href="#">Sell an Item</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-label-md font-bold mb-6 text-primary uppercase">Support</h4>
+<ul class="flex flex-col gap-3 text-body-md text-on-surface-variant">
+<li class=""><a class="hover:text-on-surface transition-colors" href="#">Help Center / FAQ</a></li>
+<li class=""><a class="hover:text-on-surface transition-colors" href="#">Buyer Protection</a></li>
+<li class=""><a class="hover:text-on-surface transition-colors" href="#">Auction Rules</a></li>
+<li class=""><a class="hover:text-on-surface transition-colors" href="#">Shipping &amp; Returns</a></li>
+</ul>
+</div>
+<div class="flex flex-col gap-6">
+<h4 class="text-label-md font-bold text-primary uppercase">Auction Alerts</h4>
+<div class="flex gap-2 p-1 glass-panel">
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-full px-4" placeholder="your email..." type="email">
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-bold text-label-md hover:brightness-110 active:scale-95 transition-all">Join</button>
+</div>
+<div class="flex flex-col gap-2 text-label-md opacity-60">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+<span class="">support@aucti.on</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">phone</span>
+<span class="">+1 (555) 019-2834</span>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full max-w-7xl pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 opacity-40 text-label-md">
+<span class="">© 2024 AUCTI.ON Inc. All rights reserved.</span>
+<div class="flex gap-6">
+<a class="hover:underline" href="#">Privacy Policy</a>
+<a class="hover:underline" href="#">Terms of Service</a>
+<a class="hover:underline" href="#">Cookies</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for Bid buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                let ripple = document.createElement('div');
+                ripple.style.position = 'absolute';
+                ripple.style.width = '100px';
+                ripple.style.height = '100px';
+                ripple.style.background = 'rgba(255,255,255,0.2)';
+                ripple.style.borderRadius = '50%';
+                ripple.style.pointerEvents = 'none';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.left = (e.clientX - this.getBoundingClientRect().left - 50) + 'px';
+                ripple.style.top = (e.clientY - this.getBoundingClientRect().top - 50) + 'px';
+                this.appendChild(ripple);
+                ripple.animate([
+                    { transform: 'scale(0)', opacity: 1 },
+                    { transform: 'scale(4)', opacity: 0 }
+                ], { duration: 600, easing: 'ease-out' }).onfinish = () => ripple.remove();
+            });
+        });
+    </script>
+
+<script src="script.js"></script>
+</body></html>

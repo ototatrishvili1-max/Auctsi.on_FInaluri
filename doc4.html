@@ -1,0 +1,525 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Live Auctions | AUCTI.ON</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#0f172a",
+                    "surface-container-highest": "#353436",
+                    "inverse-surface": "#e4e2e4",
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-secondary": "#233144",
+                    "on-secondary-fixed": "#0d1c2f",
+                    "surface-container-low": "#1b1b1d",
+                    "on-secondary-container": "#abb9d2",
+                    "tertiary": "#dec29a",
+                    "on-primary": "#283044",
+                    "background": "#131315",
+                    "on-tertiary": "#3e2d11",
+                    "surface-container": "#1f1f21",
+                    "inverse-primary": "#565e74",
+                    "secondary-container": "#3c4a5e",
+                    "outline-variant": "#45464d",
+                    "outline": "#909097",
+                    "on-error": "#690005",
+                    "on-background": "#e4e2e4",
+                    "error": "#ffb4ab",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-error-container": "#ffdad6",
+                    "secondary-fixed": "#d5e3fd",
+                    "surface-container-lowest": "#0e0e10",
+                    "surface-tint": "#bec6e0",
+                    "inverse-on-surface": "#303032",
+                    "secondary": "#b9c7e0",
+                    "primary": "#bec6e0",
+                    "tertiary-container": "#231500",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "on-primary-container": "#798098",
+                    "on-tertiary-container": "#957d5a",
+                    "tertiary-fixed-dim": "#dec29a",
+                    "surface": "#131315",
+                    "secondary-fixed-dim": "#b9c7e0",
+                    "primary-fixed": "#dae2fd",
+                    "on-tertiary-fixed": "#271901",
+                    "surface-container-high": "#2a2a2b",
+                    "on-secondary-fixed-variant": "#3a485c",
+                    "on-primary-fixed": "#131b2e",
+                    "surface-bright": "#39393b",
+                    "error-container": "#93000a",
+                    "surface-variant": "#353436",
+                    "on-surface-variant": "#c6c6cd",
+                    "surface-dim": "#131315",
+                    "on-surface": "#e4e2e4",
+                    "tertiary-fixed": "#fcdeb5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "panel-gap": "20px",
+                    "container-padding-desktop": "32px",
+                    "container-padding-mobile": "16px",
+                    "base": "8px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "price-display": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "price-display": ["36px", {"lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            backdrop-filter: blur(24px);
+            background: rgba(31, 31, 33, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+        }
+        .liquid-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .liquid-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transform: rotate(45deg);
+            pointer-events: none;
+            transition: 0.5s;
+        }
+        .liquid-shine:hover::after {
+            left: 100%;
+            top: 100%;
+        }
+        .pulsate-red {
+            animation: pulse-red 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-red {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .5; transform: scale(1.2); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="sticky top-0 z-50 flex items-center justify-between w-full max-w-7xl mx-auto rounded-full mt-4 px-6 py-2 bg-secondary-container/80 backdrop-blur-xl dark:bg-secondary-container/80 border border-white/10 shadow-2xl"><div class="flex items-center gap-8"><a href="doc.html" class="text-headline-md font-headline-md font-black tracking-tighter text-on-secondary-container dark:text-on-secondary-container">AUCTI.ON</a><div class="hidden md:flex items-center gap-6"><a class="text-label-md font-label-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors" href="doc.html">Auctions</a><a class="text-label-md font-label-md text-primary font-bold border-b-2 border-primary" href="#">Live</a><a class="text-label-md font-label-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors" href="doc5.html">Sell</a></div></div><div class="flex-1 flex items-center justify-center gap-4 mx-8"><div class="relative w-full max-w-md"><button id="burger-btn" class="material-symbols-outlined text-on-surface-variant hover:bg-white/5 p-2 rounded-full transition-all border-none bg-transparent cursor-pointer">menu</button><input class="w-full bg-surface-container-lowest/50 border border-white/10 rounded-full py-1.5 pl-10 pr-4 text-label-md focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" placeholder="Search live items..." type="text"></div><button class="px-4 py-1.5 bg-surface-container-lowest/50 border border-white/10 rounded-full hover:bg-white/10 transition-all flex items-center gap-2 text-label-md text-on-surface-variant"><span class="material-symbols-outlined text-sm">filter_list</span><span class="">Filter</span></button><button class="bg-primary text-on-primary px-6 py-1.5 rounded-full text-label-md font-bold whitespace-nowrap active:scale-95 transition-transform shadow-lg">Add New +</button></div><div class="flex items-center gap-4"><span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-white/5 p-2 rounded-full transition-all">menu</span><a href="doc3.html" class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/30 block"><img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnUeMIIYBUXU1Mp1qQhPPXc9DsqnwZ3Ax02qs_0zD3Mn8qMDc5CfjPILBOIitlSz5xAWV5hvKOH80GhOZmU91P70HqUgzLZJ192l5DEzDwrchtOGd1CF7UuRpk7psswIOT809z7O55y2bbTqTN2Wc7iPXbByduho5fBJ3vImmfZFGrxj2DWd44YQ4bRUuFUv_tRQaZkNt-OalP6yBYx2XDn2wCKLqMcAMXzGB1PU3cf4xxp9bjaoJ2rA"></a></div></nav>
+<div id="menu-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+<div id="menu-drawer" class="fixed top-0 right-0 h-full w-72 bg-surface-container z-50 translate-x-full transition-transform duration-300 p-8 flex flex-col gap-8 border-l border-white/10">
+  <button onclick="closeDrawer()" class="self-end p-2 rounded-full hover:bg-white/10 transition-all border-none bg-transparent text-on-surface cursor-pointer"><span class="material-symbols-outlined">close</span></button>
+  <nav class="flex flex-col gap-6 mt-4">
+    <a href="doc.html" class="text-headline-md font-bold hover:text-primary transition-all hover:translate-x-2 block">Auctions</a>
+    <a href="doc4.html" class="text-headline-md font-bold hover:text-primary transition-all hover:translate-x-2 block">Live</a>
+    <a href="doc5.html" class="text-headline-md font-bold hover:text-primary transition-all hover:translate-x-2 block">Sell</a>
+    <a href="doc3.html" class="text-headline-md font-bold hover:text-primary transition-all hover:translate-x-2 block">Profile</a>
+  </nav>
+</div>
+<main class="max-w-7xl mx-auto px-gutter mt-12 mb-24">
+<!-- Hero Spotlight Section -->
+<section class="mb-16">
+<div class="glass-panel rounded-3xl overflow-hidden relative group">
+<div class="grid grid-cols-1 lg:grid-cols-2">
+<div class="p-12 flex flex-col justify-center relative z-10">
+<div class="flex items-center gap-2 mb-6">
+<span class="w-3 h-3 rounded-full bg-[#ef4444] pulsate-red"></span>
+<span class="text-label-md font-bold text-[#ef4444] tracking-widest">LIVE FEATURED AUCTION</span>
+</div>
+<h1 class="text-display-lg font-display-lg mb-4 text-on-surface">ROG Zephyrus G14 Limited Edition</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-8 max-w-lg">One of only 500 units worldwide. Professionally calibrated display, signature chassis, and exclusive collector's packaging. Current high demand.</p>
+<div class="flex items-end gap-6 mb-10">
+<div>
+<span class="text-label-md text-on-surface-variant block mb-1">Current Bid</span>
+<span class="text-price-display font-price-display text-primary">$4,850.00</span>
+</div>
+<div class="pb-1">
+<span class="text-label-md text-on-surface-variant block mb-1">Ends In</span>
+<span class="text-headline-md font-headline-md text-tertiary">00:33:52</span>
+</div>
+</div>
+<div class="flex gap-4">
+<a href="doc2.html" class="bg-[#3b82f6] text-white px-8 py-4 rounded-xl font-headline-md text-headline-md hover:brightness-110 active:scale-95 transition-all shadow-[0_0_20px_rgba(59,130,246,0.3)] text-center">Place Bid Now</a>
+<button class="glass-panel border-white/20 px-8 py-4 rounded-xl font-headline-md text-headline-md hover:bg-white/10 active:scale-95 transition-all">Watch Stream</button>
+</div>
+</div>
+<div class="relative h-[500px] lg:h-auto overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-r from-surface-container via-transparent to-transparent z-10"></div>
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Sleek and futuristic gaming laptop with a glowing logo and high-end finish, set against a dark, tech-inspired background with dynamic lighting. The image captures the luxury and performance of the ROG Zephyrus G14, with reflections of electric blue and slate gray colors mirroring the Liquid Glass design aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD78QwT5eFC2xp0hQZ3J-_rRYSLmD5IRIJBXHJTULx3Vyn5lr_QnCP679H4S2yeSPsERfa2z0iQWx3cub6tss8rhJuYI0a1JTS6sPA69QwEHHqMxPlc4dUc7q3MBPa5YahXqFARpOla8RyHVAz5rWeWa1zzPfEMsj0_XdOtzVs32hBK8RA8gJuiE56LMfo3e0NDH5PVFZM6m4JTaOX8O8SHGTzhSFP8CTijhtA2bil6V_9hRgRIXtDpfQ">
+<div class="absolute top-8 right-8 z-20 flex gap-2">
+<div class="glass-panel px-4 py-2 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">visibility</span>
+<span class="text-label-md text-on-surface">1.2k Viewing</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Live Auction Grid Header -->
+<div class="flex items-end justify-between mb-8">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface">Live Auctions</h2>
+<p class="text-body-md text-on-surface-variant">Real-time bidding on certified luxury assets.</p>
+</div>
+<div class="flex gap-2">
+<button class="p-2 glass-panel rounded-lg hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">grid_view</span>
+</button>
+<button class="p-2 glass-panel rounded-lg hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">view_list</span>
+</button>
+</div>
+</div>
+<!-- Bento Grid for Active Auctions -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-panel-gap">
+<!-- Card 1 -->
+<div class="glass-panel rounded-2xl p-4 flex flex-col group liquid-shine cursor-pointer transition-all hover:scale-[1.02] hover:shadow-2xl">
+<div class="relative h-48 rounded-xl overflow-hidden mb-4">
+<img class="w-full h-full object-cover" data-alt="High-resolution image of a collection of vintage smartphones and gadgets laid out neatly on a dark wooden surface. The lighting is focused and professional, showcasing the textures of the devices. The overall mood is nostalgic yet premium, with deep shadow details and subtle highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwQ7Nucnn0lEw_hiONNMIkZthX1rQQgE6JEddxvM42h491uekEpMXnVFGG-g5pftsxrkcEZ44cd7RaxPyBAi_-9FwpXQ2naUKGBvIxWqZjSEeWqYgzgyEKnE7CzcZN-q3ZQbUGxxAQGtKWW3--nBsRv2-SPfFYvfvr6Vi2yFTGlj1-G05TlQj3N467ZoNzPCL-QToFYcELroRjLbG9dO0S1VMBl6ShzvxX7NriqotiAzTNX0KAOtNVlg">
+<div class="absolute top-3 left-3 flex items-center gap-2 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md border border-white/10">
+<span class="w-2 h-2 rounded-full bg-[#ef4444] pulsate-red"></span>
+<span class="text-[10px] font-bold text-white tracking-widest">LIVE</span>
+</div>
+<div class="absolute bottom-3 right-3 bg-[#3b82f6]/80 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
+<span class="text-[11px] font-bold text-white">42 Bids</span>
+</div>
+</div>
+<div class="flex-1">
+<h3 class="text-headline-md font-headline-md text-on-surface mb-1 truncate">Early Tech Archive</h3>
+<p class="text-label-md text-on-surface-variant mb-4">Rare collection of first-gen handhelds.</p>
+<div class="flex items-center justify-between">
+<div>
+<span class="text-[10px] uppercase text-on-surface-variant block">Current</span>
+<span class="text-body-lg font-bold text-primary">$1,200</span>
+</div>
+<div class="text-right">
+<span class="text-[10px] uppercase text-on-surface-variant block">Remains</span>
+<span class="text-body-lg font-bold text-tertiary">04:12</span>
+</div>
+</div>
+</div>
+<a href="doc2.html" class="mt-4 w-full py-2 rounded-lg bg-surface-container-highest border border-white/10 hover:bg-primary hover:text-on-primary transition-all font-label-md text-center block">Join Auction</a>
+</div>
+<!-- Card 2 -->
+<div class="glass-panel rounded-2xl p-4 flex flex-col group liquid-shine cursor-pointer transition-all hover:scale-[1.02]">
+<div class="relative h-48 rounded-xl overflow-hidden mb-4">
+<img class="w-full h-full object-cover" data-alt="Action shot of a majestic dark brown horse standing in a sunlit pasture, with detailed muscle definition and a glossy coat. The background shows a soft, natural landscape with golden hour lighting. The image emphasizes the strength and elegance of the animal, fitting for a high-end livestock auction." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaSU2OSbhFDfLOB_HPH58QgTE33uE7fMH4c0aXF3xcKz9cAITtYqR1iOe4m1RfDxBYkmW1i5J20H3aQ5WtS6k91KgErvAzngQ3FML3ogjigHI9IeOdNZ_h9gbzDVElub7iLxSuawvaLJ5wJ_ueZV4lPiEKrMRbgp4CTIbGrytn1qAyV3jTfnrHKzztW9yEJE4PkZSOoo1AUFX2HwH0aK0Bz4FzpyCqYJgnF7yF4M87I76We4k8c9HmnA">
+<div class="absolute top-3 left-3 flex items-center gap-2 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md border border-white/10">
+<span class="w-2 h-2 rounded-full bg-[#ef4444] pulsate-red"></span>
+<span class="text-[10px] font-bold text-white tracking-widest">LIVE</span>
+</div>
+<div class="absolute bottom-3 right-3 bg-[#3b82f6]/80 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
+<span class="text-[11px] font-bold text-white">18 Bids</span>
+</div>
+</div>
+<div class="flex-1">
+<h3 class="text-headline-md font-headline-md text-on-surface mb-1 truncate">Equestrian Stallion</h3>
+<p class="text-label-md text-on-surface-variant mb-4">Purebred Arabian stallion, certified pedigree.</p>
+<div class="flex items-center justify-between">
+<div>
+<span class="text-[10px] uppercase text-on-surface-variant block">Current</span>
+<span class="text-body-lg font-bold text-primary">$24,500</span>
+</div>
+<div class="text-right">
+<span class="text-[10px] uppercase text-on-surface-variant block">Remains</span>
+<span class="text-body-lg font-bold text-tertiary">12:45</span>
+</div>
+</div>
+</div>
+<a href="doc2.html" class="mt-4 w-full py-2 rounded-lg bg-surface-container-highest border border-white/10 hover:bg-primary hover:text-on-primary transition-all font-label-md text-center block">Join Auction</a>
+</div>
+<!-- Card 3 -->
+<div class="glass-panel rounded-2xl p-4 flex flex-col group liquid-shine cursor-pointer transition-all hover:scale-[1.02]">
+<div class="relative h-48 rounded-xl overflow-hidden mb-4">
+<img class="w-full h-full object-cover" data-alt="Luxury architectural photography of a modern villa with an infinity pool reflecting the sunset. The building features clean lines, expansive glass walls, and warm internal lighting. The surrounding landscape is minimalist and elegant, evoking a sense of high-end real estate and exclusivity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOhaa2PwV4p8zAt3LY7WnaYeIGQUQNudHlPIk7iqXDYPZBINmeI7YqODOX-5L2gM3iUPfY6W0NxK1VMOPzYkUbOeoD4NgeJfcWp1WddzMOAXjEyoippfTHyiuz8zZcdHCc2s04Enj_BdGCyHDIs5FNCBS8gqX7WcAVyU7AmJQKG_WICfSjPSOw6xXkVIjiyTGLIE3PTgAp4LtmiC3cTY2d0iDimC3UrKa2zYV8BmI2pTu2rNKHsmgLwg">
+<div class="absolute top-3 left-3 flex items-center gap-2 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md border border-white/10">
+<span class="w-2 h-2 rounded-full bg-[#ef4444] pulsate-red"></span>
+<span class="text-[10px] font-bold text-white tracking-widest">LIVE</span>
+</div>
+<div class="absolute bottom-3 right-3 bg-[#3b82f6]/80 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
+<span class="text-[11px] font-bold text-white">5 Bids</span>
+</div>
+</div>
+<div class="flex-1">
+<h3 class="text-headline-md font-headline-md text-on-surface mb-1 truncate">Coastal Villa 'Nova'</h3>
+<p class="text-label-md text-on-surface-variant mb-4">Exclusive 5-bedroom luxury estate.</p>
+<div class="flex items-center justify-between">
+<div>
+<span class="text-[10px] uppercase text-on-surface-variant block">Current</span>
+<span class="text-body-lg font-bold text-primary">$1.8M</span>
+</div>
+<div class="text-right">
+<span class="text-[10px] uppercase text-on-surface-variant block">Remains</span>
+<span class="text-body-lg font-bold text-tertiary">02d:15h</span>
+</div>
+</div>
+</div>
+<a href="doc2.html" class="mt-4 w-full py-2 rounded-lg bg-surface-container-highest border border-white/10 hover:bg-primary hover:text-on-primary transition-all font-label-md text-center block">Join Auction</a>
+</div>
+<!-- Card 4 -->
+<div class="glass-panel rounded-2xl p-4 flex flex-col group liquid-shine cursor-pointer transition-all hover:scale-[1.02]">
+<div class="relative h-48 rounded-xl overflow-hidden mb-4">
+<img class="w-full h-full object-cover" data-alt="Macro photography of a high-performance computer graphics card with customizable RGB lighting and a polished metal finish. The focus is sharp on the intricate cooling fans and circuits, while the background is a dark, tech-oriented studio setting with subtle blue glows and high contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAScrOZDbWiihJmMPviBeNE91vn-xg26kt_iZiRmrz03COZbCJ6uzBeL1uJ6GDe90eGQ3n26y-4DU_mJQnojRTXJZuo14OhqVVtNhvIQ6ixPLAtE1FzthI1pPKnCYuN1a2hAySCBKp7alWpvhy0SjspL0CiCLEwcfJ26netCLuiuIMjJNB8rzxzkCqlY-tDhwkz6QOkjGNuzaGPqLSIGZsW40UtMhLJ69K2CGfwRpzISQT_4g-LNfILYA">
+<div class="absolute top-3 left-3 flex items-center gap-2 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md border border-white/10">
+<span class="w-2 h-2 rounded-full bg-[#ef4444] pulsate-red"></span>
+<span class="text-[10px] font-bold text-white tracking-widest">LIVE</span>
+</div>
+<div class="absolute bottom-3 right-3 bg-[#3b82f6]/80 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
+<span class="text-[11px] font-bold text-white">89 Bids</span>
+</div>
+</div>
+<div class="flex-1">
+<h3 class="text-headline-md font-headline-md text-on-surface mb-1 truncate">RTX 4090 OC Edition</h3>
+<p class="text-label-md text-on-surface-variant mb-4">Brand new, sealed, flagship performance.</p>
+<div class="flex items-center justify-between">
+<div>
+<span class="text-[10px] uppercase text-on-surface-variant block">Current</span>
+<span class="text-body-lg font-bold text-primary">$1,950</span>
+</div>
+<div class="text-right">
+<span class="text-[10px] uppercase text-on-surface-variant block">Remains</span>
+<span class="text-body-lg font-bold text-tertiary">01:52</span>
+</div>
+</div>
+</div>
+<a href="doc2.html" class="mt-4 w-full py-2 rounded-lg bg-surface-container-highest border border-white/10 hover:bg-primary hover:text-on-primary transition-all font-label-md text-center block">Join Auction</a>
+</div>
+<!-- Repeated Card structure for variety -->
+<!-- Card 5 -->
+<div class="glass-panel rounded-2xl p-4 flex flex-col group liquid-shine cursor-pointer transition-all hover:scale-[1.02]">
+<div class="relative h-48 rounded-xl overflow-hidden mb-4">
+<img class="w-full h-full object-cover" data-alt="A professional heavy-duty mechanics tool chest in bright red, featuring multiple drawers and heavy-duty casters. The chest is set in a clean, industrial garage environment with tools organized nearby. High-index refraction and backdrop blur are simulated in the metallic reflections." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjSr-ZYkJ1X1bEDpQpAioUPD-Zgs3U5aJe3q9xuGlU9jStakaTNw1IXl7_eoWnjR2t-5Grzdl51Orq63Igi_oekgne61nbShiUDHr3Pb7qJpxBU1g38yRmHCiJBUSLd_FIEXy3tYfqI3_T_C3l8wUnGs1sGOXOXu6f4C8AMBFfmsvPWm2k8l1CZAz3Oj53RHjb3WlWBJ8DaQlRA-8rffuqEXmnUjYTEe9y3DJfgBUqu6Kh2nIfIH162Q">
+<div class="absolute top-3 left-3 flex items-center gap-2 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md border border-white/10">
+<span class="w-2 h-2 rounded-full bg-[#ef4444] pulsate-red"></span>
+<span class="text-[10px] font-bold text-white tracking-widest">LIVE</span>
+</div>
+<div class="absolute bottom-3 right-3 bg-[#3b82f6]/80 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
+<span class="text-[11px] font-bold text-white">22 Bids</span>
+</div>
+</div>
+<div class="flex-1">
+<h3 class="text-headline-md font-headline-md text-on-surface mb-1 truncate">Master Pro Chest</h3>
+<p class="text-label-md text-on-surface-variant mb-4">Full kit including pneumatic tools.</p>
+<div class="flex items-center justify-between">
+<div>
+<span class="text-[10px] uppercase text-on-surface-variant block">Current</span>
+<span class="text-body-lg font-bold text-primary">$3,200</span>
+</div>
+<div class="text-right">
+<span class="text-[10px] uppercase text-on-surface-variant block">Remains</span>
+<span class="text-body-lg font-bold text-tertiary">14:10</span>
+</div>
+</div>
+</div>
+<a href="doc2.html" class="mt-4 w-full py-2 rounded-lg bg-surface-container-highest border border-white/10 hover:bg-primary hover:text-on-primary transition-all font-label-md text-center block">Join Auction</a>
+</div>
+<!-- Card 6 -->
+<div class="glass-panel rounded-2xl p-4 flex flex-col group liquid-shine cursor-pointer transition-all hover:scale-[1.02]">
+<div class="relative h-48 rounded-xl overflow-hidden mb-4">
+<img class="w-full h-full object-cover" data-alt="Sleek modern sedan in metallic silver parked on a luxury driveway, with focused lighting highlighting its aerodynamic curves and premium wheels. The background is a minimalist modern home with glass features. The overall color palette is dominated by slate and electric blue accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuArmiY8GvolnmdnK19gFnv47PT44cHoNDPEwDoM4eQRWXHzd6HGgouyGWSZvWuer7fj8YnkMLhAvd1MMpD38QPhN99c81NBh3JQEM6WhAOKbr471QQ_o5mUn9071W5L3ChvSxxf5PasYkHo32PCkl_esjmE1e8iN2mI4_a8NoC4GlX0rL67eFPUtuLT-ljuDE353YThDak3e3CdxBSw8odhxuNnabUYY5xvD0GZkvdnezt2sXxNlYWu_g">
+<div class="absolute top-3 left-3 flex items-center gap-2 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md border border-white/10">
+<span class="w-2 h-2 rounded-full bg-[#ef4444] pulsate-red"></span>
+<span class="text-[10px] font-bold text-white tracking-widest">LIVE</span>
+</div>
+<div class="absolute bottom-3 right-3 bg-[#3b82f6]/80 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
+<span class="text-[11px] font-bold text-white">12 Bids</span>
+</div>
+</div>
+<div class="flex-1">
+<h3 class="text-headline-md font-headline-md text-on-surface mb-1 truncate">Luxury Sedan 2024</h3>
+<p class="text-label-md text-on-surface-variant mb-4">Low mileage, executive package included.</p>
+<div class="flex items-center justify-between">
+<div>
+<span class="text-[10px] uppercase text-on-surface-variant block">Current</span>
+<span class="text-body-lg font-bold text-primary">$52,000</span>
+</div>
+<div class="text-right">
+<span class="text-[10px] uppercase text-on-surface-variant block">Remains</span>
+<span class="text-body-lg font-bold text-tertiary">08:33</span>
+</div>
+</div>
+</div>
+<a href="doc2.html" class="mt-4 w-full py-2 rounded-lg bg-surface-container-highest border border-white/10 hover:bg-primary hover:text-on-primary transition-all font-label-md text-center block">Join Auction</a>
+</div>
+<!-- Card 7 -->
+<div class="glass-panel rounded-2xl p-4 flex flex-col group liquid-shine cursor-pointer transition-all hover:scale-[1.02]">
+<div class="relative h-48 rounded-xl overflow-hidden mb-4">
+<img class="w-full h-full object-cover" data-alt="Two sticks of high-performance desktop RAM with golden heatsinks and RGB lighting, photographed from a dynamic low angle on a reflective black surface. The lighting creates a high-gloss finish that reacts to the surrounding environment, fitting the Liquid Glass aesthetic of precision technology." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXf6TCMt1TFjRq5tJEMxeWzbVScUZUJxHKz0CUiplVgIKtWQwsTuXzKD4M17hq63ZYqchVGISn6dNsB7iFBobioneUNq19Qm27MW2RqMviDkCqscvhTKgs51fiCUxbZZ4CoKbbeK7am9JeLxRtW5YODB4FQAgB6wA8W16SR4u10wBAYw6Rjtdf8GaJGhYMse4R0WcbZhYrNHvJX6YX7i5dQBG8TqNdFoHmoepV4a3FsJwiscsWwMnJ9Q">
+<div class="absolute top-3 left-3 flex items-center gap-2 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md border border-white/10">
+<span class="w-2 h-2 rounded-full bg-[#ef4444] pulsate-red"></span>
+<span class="text-[10px] font-bold text-white tracking-widest">LIVE</span>
+</div>
+<div class="absolute bottom-3 right-3 bg-[#3b82f6]/80 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
+<span class="text-[11px] font-bold text-white">67 Bids</span>
+</div>
+</div>
+<div class="flex-1">
+<h3 class="text-headline-md font-headline-md text-on-surface mb-1 truncate">Trident Z Royal 64GB</h3>
+<p class="text-label-md text-on-surface-variant mb-4">6400MHz, Gold finish, premium overclocking.</p>
+<div class="flex items-center justify-between">
+<div>
+<span class="text-[10px] uppercase text-on-surface-variant block">Current</span>
+<span class="text-body-lg font-bold text-primary">$450</span>
+</div>
+<div class="text-right">
+<span class="text-[10px] uppercase text-on-surface-variant block">Remains</span>
+<span class="text-body-lg font-bold text-tertiary">00:24</span>
+</div>
+</div>
+</div>
+<a href="doc2.html" class="mt-4 w-full py-2 rounded-lg bg-surface-container-highest border border-white/10 hover:bg-primary hover:text-on-primary transition-all font-label-md text-center block">Join Auction</a>
+</div>
+<!-- Card 8 -->
+<div class="glass-panel rounded-2xl p-4 flex flex-col group liquid-shine cursor-pointer transition-all hover:scale-[1.02]">
+<div class="relative h-48 rounded-xl overflow-hidden mb-4">
+<img class="w-full h-full object-cover" data-alt="A heavy-duty yellow power drill being held by a hand in a professional workshop setting. The lighting is warm and directional, emphasizing the texture and rugged build of the tool. The background shows a variety of other high-end professional tools on a pegboard, blurred into the distance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZSjfqENTNe1Damt9rQoMQOM_F_dX22_HnwVCgopRwd7Mn5Qnt-yVr2T9OVEr5r64fpRq_JTnrrGB1xFmqmzZdlEF2IvS0fGeSb39q-6HnXKMLT7FQVxu9qG8OIN-GDzS6yn042teGYrRs2aTiPcYpQPWSv1XljplPZPWZ2ScDLXe12Yk-QqZp2Rt9XSv0un2XO0cmoa-dgajWaRq-rmON5Jio3vaaeuAZImweLHpq79iJPXTW3GpBnA">
+<div class="absolute top-3 left-3 flex items-center gap-2 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md border border-white/10">
+<span class="w-2 h-2 rounded-full bg-[#ef4444] pulsate-red"></span>
+<span class="text-[10px] font-bold text-white tracking-widest">LIVE</span>
+</div>
+<div class="absolute bottom-3 right-3 bg-[#3b82f6]/80 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
+<span class="text-[11px] font-bold text-white">15 Bids</span>
+</div>
+</div>
+<div class="flex-1">
+<h3 class="text-headline-md font-headline-md text-on-surface mb-1 truncate">Industrial Impact Driver</h3>
+<p class="text-label-md text-on-surface-variant mb-4">20V Max, brushless motor, including 2 batteries.</p>
+<div class="flex items-center justify-between">
+<div>
+<span class="text-[10px] uppercase text-on-surface-variant block">Current</span>
+<span class="text-body-lg font-bold text-primary">$280</span>
+</div>
+<div class="text-right">
+<span class="text-[10px] uppercase text-on-surface-variant block">Remains</span>
+<span class="text-body-lg font-bold text-tertiary">03:55</span>
+</div>
+</div>
+</div>
+<a href="doc2.html" class="mt-4 w-full py-2 rounded-lg bg-surface-container-highest border border-white/10 hover:bg-primary hover:text-on-primary transition-all font-label-md text-center block">Join Auction</a>
+</div>
+</div>
+<div class="mt-12 flex justify-center">
+<button class="glass-panel border-white/10 px-12 py-3 rounded-full text-label-md font-bold hover:bg-white/5 transition-all">Show More Live Items</button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full px-gutter py-12 flex flex-col items-center bg-surface-container-low/95 dark:bg-surface-container-low/95 rounded-t-3xl mt-12 border-t border-white/5">
+<div class="max-w-7xl w-full grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+<div class="col-span-1 md:col-span-1">
+<span class="text-headline-md font-headline-md font-black text-on-surface block mb-4">AUCTI.ON</span>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-xs">The premier marketplace for certified pre-owned tech, collectibles, and live liquid-fluid peer-to-peer auctions.</p>
+<div class="flex gap-4 mt-6">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">face_nod</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">video_library</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">public</span>
+</div>
+</div>
+<div>
+<h4 class="text-label-md font-bold text-on-surface mb-6 uppercase tracking-wider">Buy &amp; Bid</h4>
+<ul class="space-y-3">
+<li class=""><a class="text-body-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Live Auctions</a></li>
+<li class=""><a class="text-body-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Today's Deals</a></li>
+<li class=""><a class="text-body-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Categories</a></li>
+<li class=""><a class="text-body-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">How Bidding Works</a></li>
+<li class=""><a class="text-body-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Sell an Item</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-label-md font-bold text-on-surface mb-6 uppercase tracking-wider">Support</h4>
+<ul class="space-y-3">
+<li class=""><a class="text-body-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Help Center / FAQ</a></li>
+<li class=""><a class="text-body-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Buyer Protection</a></li>
+<li class=""><a class="text-body-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Auction Rules</a></li>
+<li class=""><a class="text-body-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Shipping &amp; Returns</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-label-md font-bold text-on-surface mb-6 uppercase tracking-wider">Auction Alerts</h4>
+<div class="flex items-center glass-panel p-1 rounded-xl mb-4">
+<input class="bg-transparent border-none focus:ring-0 text-label-md flex-1 px-3" placeholder="your email..." type="email">
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg text-label-md font-bold">Join</button>
+</div>
+<div class="space-y-2">
+<div class="flex items-center gap-2 text-on-surface-variant text-body-md">
+<span class="material-symbols-outlined text-sm">mail</span>
+                        support@aucti.on
+                    </div>
+<div class="flex items-center gap-2 text-on-surface-variant text-body-md">
+<span class="material-symbols-outlined text-sm">call</span>
+                        +1 (555) 019-2834
+                    </div>
+</div>
+</div>
+</div>
+<div class="w-full pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+<span class="text-label-md text-on-surface-variant">© 2024 AUCTI.ON Inc. All rights reserved.</span>
+<div class="flex gap-6">
+<a class="text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Privacy Policy</a>
+<a class="text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Terms of Service</a>
+<a class="text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Cookies</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction: Countdown simulation
+        const timerElements = document.querySelectorAll('.text-tertiary');
+        timerElements.forEach(el => {
+            let time = el.innerText.split(':');
+            if(time.length === 3) {
+                let hours = parseInt(time[0]);
+                let minutes = parseInt(time[1]);
+                let seconds = parseInt(time[2]);
+
+                setInterval(() => {
+                    seconds--;
+                    if(seconds < 0) {
+                        seconds = 59;
+                        minutes--;
+                    }
+                    if(minutes < 0) {
+                        minutes = 59;
+                        hours--;
+                    }
+                    el.innerText = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                }, 1000);
+            }
+        });
+    </script>
+
+<script src="script.js"></script>
+</body></html>
