@@ -4,7 +4,7 @@
 
 // ── Active nav link ──────────────────────────
 function setActiveNavLink() {
-  const page = window.location.pathname.split('/').pop() || 'doc.html';
+  const page = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('nav a').forEach(a => {
     const href = a.getAttribute('href');
     if (href === page) {
@@ -61,7 +61,7 @@ function closeDrawer() {
   document.body.style.overflow = '';
 }
 
-// ── togglePopup (doc.html menu & filter) ─────
+// ── togglePopup (index.html menu & filter) ─────
 function togglePopup(id) {
   const popup = document.getElementById(id);
   if (!popup) return;
